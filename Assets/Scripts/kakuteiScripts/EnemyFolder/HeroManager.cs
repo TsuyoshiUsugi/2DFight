@@ -45,7 +45,7 @@ public class HeroManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         GameObject.Find("GameManager").GetComponent<GameManage>().enemyCount++;
 
-        this.rb.AddForce(transform.right * (-moveSpeed))
+        //this.rb.AddForce(transform.right * (-moveSpeed))
     }
 
     void Update()
