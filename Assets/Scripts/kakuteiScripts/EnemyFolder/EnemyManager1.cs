@@ -40,7 +40,7 @@ public class EnemyManager1 : MonoBehaviour
         PlayerPosition = playerObject.transform.position;
         EnemyPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
-        GameObject.Find("GameManager").GetComponent<GameManage>().enemyCount++;
+        GameObject.Find("GameManager").GetComponent<GameManage2>().enemyCount++;
 
     }
 
@@ -114,7 +114,7 @@ public class EnemyManager1 : MonoBehaviour
             foreach (Collider2D hitplayer in hitPlayer)
             {
                 Debug.Log(hitplayer.gameObject.name + "Ç…çUåÇ");
-                hitplayer.GetComponent<PlayerManager>().OnDamage(at);
+                hitplayer.GetComponent<PlayerManager2>().OnDamage(at);
             }
         }
     }
@@ -141,7 +141,7 @@ public class EnemyManager1 : MonoBehaviour
 
         animator.SetTrigger("Die");
         if (hp! <= 0)
-            GameObject.Find("GameManager").GetComponent<GameManage>().enemyCount--;
+            GameObject.Find("GameManager").GetComponent<GameManage2>().enemyCount--;
 
     }
 

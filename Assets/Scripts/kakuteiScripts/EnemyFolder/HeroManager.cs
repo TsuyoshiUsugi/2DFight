@@ -7,7 +7,7 @@ public class HeroManager : MonoBehaviour
     public static HeroManager instance;
 
     //攻撃力、体力、移動スピードを格納する変数を用意
-    int at = 20;
+    public int at = 20;
     public float hp = 200;
     public float moveSpeed;
 
@@ -43,9 +43,9 @@ public class HeroManager : MonoBehaviour
         PlayerPosition = playerObject.transform.position;
         HeroPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
-        GameObject.Find("GameManager").GetComponent<GameManage>().enemyCount++;
+        GameObject.Find("GameManager").GetComponent<GameManage3>().enemyCount++;
 
-        //this.rb.AddForce(transform.right * (-moveSpeed))
+        this.rb.AddForce(transform.up * - 1000);
     }
 
     void Update()
@@ -120,7 +120,7 @@ public class HeroManager : MonoBehaviour
             foreach (Collider2D hitplayer in hitPlayer)
             {
                 Debug.Log(hitplayer.gameObject.name + "に攻撃");
-                hitplayer.GetComponent<PlayerManager>().OnDamage(at);
+                hitplayer.GetComponent<PlayerManager3>().OnDamage(at);
             }
         }
     }
@@ -147,7 +147,7 @@ public class HeroManager : MonoBehaviour
 
         animator.SetTrigger("Die");
         if (hp! <= 0)
-            GameObject.Find("GameManager").GetComponent<GameManage>().enemyCount--;
+            GameObject.Find("GameManager").GetComponent<GameManage3>().enemyCount--;
 
     }
 

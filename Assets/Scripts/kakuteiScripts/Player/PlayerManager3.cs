@@ -11,7 +11,7 @@ public class PlayerManager3 : MonoBehaviour
     public LayerMask enemyLayer;
     Rigidbody2D rb;
     Animator animator;
-    float at = 1;
+    float at = 10;
     private float jumpForce = 250f;
     private int jumpCount = 0;
 
@@ -68,7 +68,7 @@ public class PlayerManager3 : MonoBehaviour
         {
 
             Debug.Log(hitEnemy.gameObject.name + "Ç…çUåÇ");
-            hitEnemy.GetComponent<EnemyManager>().OnDamage(at);
+            hitEnemy.GetComponent<HeroManager>().OnDamage(at);
 
 
         }
@@ -82,7 +82,7 @@ public class PlayerManager3 : MonoBehaviour
 
     public void OnDamage(float damage)
     {
-        hp -= damage * 10;
+        hp -= damage ;
 
         float t = hp;
 

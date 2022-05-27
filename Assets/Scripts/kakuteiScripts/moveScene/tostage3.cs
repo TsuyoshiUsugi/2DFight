@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartScript : MonoBehaviour
+public class tostage3 : MonoBehaviour
 {
     public void OncliclkStartButton()
     {
-        SceneManager.LoadScene("openingTo1");
+        SceneManager.LoadScene("Stage3");
     }
 }
