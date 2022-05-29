@@ -755,6 +755,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4121048223037141764, guid: 987f28c215fde864dbb564fb882f9a2f, type: 3}
+      propertyPath: orthographic size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121048223037141764, guid: 987f28c215fde864dbb564fb882f9a2f, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121048223037141764, guid: 987f28c215fde864dbb564fb882f9a2f, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121048223037141764, guid: 987f28c215fde864dbb564fb882f9a2f, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4121048223037141765, guid: 987f28c215fde864dbb564fb882f9a2f, type: 3}
       propertyPath: target
       value: 
@@ -769,11 +785,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4121048223037142011, guid: 987f28c215fde864dbb564fb882f9a2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.17
       objectReference: {fileID: 0}
     - target: {fileID: 4121048223037142011, guid: 987f28c215fde864dbb564fb882f9a2f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.29
+      value: -1.41
       objectReference: {fileID: 0}
     - target: {fileID: 4121048223037142011, guid: 987f28c215fde864dbb564fb882f9a2f, type: 3}
       propertyPath: m_LocalPosition.z
