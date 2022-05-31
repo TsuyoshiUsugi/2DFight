@@ -55,13 +55,13 @@ public class HeroManager : MonoBehaviour
         if (0.5 > PlayerPosition.x - HeroPosition.x && passedTime > attackInterval && hp != 0)
         {
             //InvokeRepeating("Attack", 2, 5);
-            Attack();
+            //Attack();
             passedTime = 0;
         }
         else if (0.5 > HeroPosition.x - PlayerPosition.x && passedTime > attackInterval && hp != 0)
         {
             //InvokeRepeating("Attack", 2, 5);
-            Attack();
+            //Attack();
             passedTime = 0;
         }
     }
@@ -110,12 +110,19 @@ public class HeroManager : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            animator.SetTrigger("isAttack");
+            //collision.GetComponent<PlayerManager3>().OnDamage(at);
+        }
+    }
+
     void Attack()
     {
         if (hp! >= 0)
         {
-
-            animator.SetTrigger("isAttack");
             Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
             foreach (Collider2D hitplayer in hitPlayer)
             {
@@ -124,11 +131,12 @@ public class HeroManager : MonoBehaviour
             }
         }
     }
-    private void OnDrawGizmosSelected()
+
+    /*private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
-    }
+    }*/
 
     public void OnDamage(float damage)
     {
