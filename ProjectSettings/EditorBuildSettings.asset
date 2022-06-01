@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage3to4.unity
     guid: 80b49bde5101b294994dbc6f52d4d674
+  - enabled: 1
+    path: Assets/Scenes/CharacterSelect.unity
+    guid: d6deab8d9900603459ce230dccfead26
+  - enabled: 1
+    path: Assets/Scenes/BattleMode.unity
+    guid: 25477df15b1c6db458b82a7ff6fbba7f
   m_configObjects: {}
