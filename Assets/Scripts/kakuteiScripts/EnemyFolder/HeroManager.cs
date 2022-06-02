@@ -121,7 +121,7 @@ public class HeroManager : MonoBehaviour
 
     void Attack()
     {
-        if (hp! >= 0)
+        if (hp >= 0)
         {
             Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
             foreach (Collider2D hitplayer in hitPlayer)

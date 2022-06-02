@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player1controller : MonoBehaviour
+public class Player2contoroller : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator animator;
@@ -10,14 +10,14 @@ public class Player1controller : MonoBehaviour
     //当たり判定を格納する変数を用意
     public Transform attackPoint;
     public float attackRadius;
-    public LayerMask player2Layer;
+    public LayerMask player1Layer;
 
     [Header("ステータス")]
     public float moveSpeed = 3;
     public float hp = 3;
     public float at = 1;
 
-    public float jumpForce = 250f;
+    public float jumpForce = 2500f;
     private int jumpCount = 0;
 
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public class Player1controller : MonoBehaviour
 
         Jump();
 
-        DieBata();
+        DieBeta();
     }
 
     void FixedUpdate()
@@ -45,7 +45,7 @@ public class Player1controller : MonoBehaviour
 
     void Move()
     {
-        float x = Input.GetAxisRaw("Horizontal1");
+        float x = Input.GetAxisRaw("Horizontal2");
 
         if (x > 0)
         {
@@ -63,7 +63,7 @@ public class Player1controller : MonoBehaviour
     //攻撃アニメーションをする
     void Attack()
     {
-        if (Input.GetButtonDown("Attack1"))
+        if (Input.GetButtonDown("Attack2"))
         {
             animator.SetTrigger("isAttack");
 
@@ -73,12 +73,12 @@ public class Player1controller : MonoBehaviour
     //当たり判定をonにする
     void AttackDamage()
     {
-        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player2Layer);
+        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player1Layer);
         foreach (Collider2D hitEnemy in hitEnemys)
         {
 
             Debug.Log(hitEnemy.gameObject.name + "に攻撃");
-            hitEnemy.GetComponent<Player2contoroller>().Ondamage(at);
+            hitEnemy.GetComponent<Player1controller>().Ondamage(at);
 
 
         }
@@ -106,7 +106,7 @@ public class Player1controller : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Vertical1") && hp != 0 && jumpCount == 0)
+        if (Input.GetButtonDown("Vertical2") && hp != 0 && jumpCount == 0)
         {
             rb.AddForce(transform.up * jumpForce);
             jumpCount++;
@@ -125,7 +125,7 @@ public class Player1controller : MonoBehaviour
 
     }
 
-    private void DieBata()
+    void DieBeta()
     {
         if (hp <= 0)
         Destroy(gameObject);
