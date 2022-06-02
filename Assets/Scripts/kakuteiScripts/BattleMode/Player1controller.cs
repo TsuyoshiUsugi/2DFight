@@ -18,7 +18,7 @@ public class Player1controller : MonoBehaviour
     public float at = 1;
 
     public float jumpForce = 250f;
-    private int jumpCount = 0;
+    public int jumpCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -117,7 +117,7 @@ public class Player1controller : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Floor"))
+        if (other.gameObject.CompareTag("Floor") || gameObject.transform.position.y <= -3)
         {
             jumpCount = 0;
         }

@@ -117,9 +117,10 @@ public class Player2contoroller : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Floor"))
+        if (other.gameObject.CompareTag("Floor") || gameObject.transform.position.y <= -3)
         {
             jumpCount = 0;
+            
         }
 
 
