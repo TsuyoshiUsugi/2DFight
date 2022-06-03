@@ -16,15 +16,18 @@ public class Player1controller : MonoBehaviour
     public float moveSpeed = 3;
     public float hp = 3;
     public float at = 1;
-
+    public float mp = 10;
     public float jumpForce = 250f;
     public int jumpCount = 0;
+
+    private Player1UI player1UIscript;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        player1UIscript = GameObject.Find("Player1UI").GetComponent<Player1UI>();
     }
 
     // Update is called once per frame
@@ -33,6 +36,8 @@ public class Player1controller : MonoBehaviour
         Attack();
 
         Jump();
+
+        Ability();
 
         DieBata();
     }
@@ -93,6 +98,7 @@ public class Player1controller : MonoBehaviour
     public void Ondamage(float damage)
     {
         hp -= damage;
+        player1UIscript.ReadHp(damage);
 
         if (hp <= 0)
         {
@@ -110,7 +116,7 @@ public class Player1controller : MonoBehaviour
         {
             rb.AddForce(transform.up * jumpForce);
             jumpCount++;
-            Debug.Log("jump");
+            
 
         }
     }
@@ -125,10 +131,41 @@ public class Player1controller : MonoBehaviour
 
     }
 
+    void Ability()
+    {
+        if (Input.GetButtonDown("Ability1"))
+        {
+            if (mp > 0)
+            {
+                
+                animator.SetTrigger("Ability");
+                mp--;
+                player1UIscript.ReadMp(1);
+            }
+        }
+    }
+
     private void DieBata()
     {
         if (hp <= 0)
         Destroy(gameObject);
 
     }
+
+    // ここからアビリティ一覧
+
+    void HeroAbility()
+    {
+
+        gameObject.layer = 12;
+
+    }
+    
+    void HeroAbility2()
+    {
+        
+        gameObject.layer = 11;
+     
+    }
+
 }

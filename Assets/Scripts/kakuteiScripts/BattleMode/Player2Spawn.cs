@@ -12,7 +12,7 @@ public class Player2Spawn : MonoBehaviour
     public int _charaNumber2 = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _charaNumber2 = Player2Select.chara2;
         Player2();

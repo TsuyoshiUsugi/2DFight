@@ -8,6 +8,8 @@ TagManager:
   - GameManager
   - Floor
   - Enemy
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - Enemy
   - player2
   - player1
-  - 
-  - 
+  - another1
+  - another2
   - 
   - 
   - 

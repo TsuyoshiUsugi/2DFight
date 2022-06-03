@@ -16,7 +16,7 @@ public class Player2contoroller : MonoBehaviour
     public float moveSpeed = 3;
     public float hp = 3;
     public float at = 1;
-
+    public float mp = 10;
     public float jumpForce = 2500f;
     private int jumpCount = 0;
 
@@ -33,6 +33,8 @@ public class Player2contoroller : MonoBehaviour
         Attack();
 
         Jump();
+
+        Ability();
 
         DieBeta();
     }
@@ -110,7 +112,7 @@ public class Player2contoroller : MonoBehaviour
         {
             rb.AddForce(transform.up * jumpForce);
             jumpCount++;
-            Debug.Log("jump");
+            
 
         }
     }
@@ -126,10 +128,39 @@ public class Player2contoroller : MonoBehaviour
 
     }
 
+    void Ability()
+    {
+        if (Input.GetButtonDown("Ability2"))
+        {
+            if (mp > 0)
+            {
+
+                animator.SetTrigger("Ability");
+                mp--;
+            }
+        }
+    }
+
     void DieBeta()
     {
         if (hp <= 0)
         Destroy(gameObject);
+
+    }
+
+    // ここからアビリティ一覧
+
+    void HeroAbility()
+    {
+
+        gameObject.layer = 13;
+
+    }
+
+    void HeroAbility2()
+    {
+
+        gameObject.layer = 10;
 
     }
 }
