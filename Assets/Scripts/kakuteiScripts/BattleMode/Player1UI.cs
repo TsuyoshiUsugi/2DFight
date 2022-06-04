@@ -11,7 +11,7 @@ public class Player1UI : MonoBehaviour
     
     private float player1Hp;    //Player1の体力
     private float gageRateHp;    //体力とゲージのサイズの比
-    private RectTransform rtHp;
+    public RectTransform rtHp;
 
     //Player1のMP情報
 
@@ -38,7 +38,10 @@ public class Player1UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (rtHp.sizeDelta.x <= 0)
+        {
+            GameObject.Find("BattleModeManager").GetComponent<BattleModeManager>().Player1Die();
+        }
     }
 
     public void ReadHp(float damage)

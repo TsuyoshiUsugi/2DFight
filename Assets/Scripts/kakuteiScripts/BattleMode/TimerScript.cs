@@ -20,6 +20,13 @@ public class TimerScript : MonoBehaviour
     {
         totalTime -= Time.deltaTime;
         second = (int)totalTime;
-        timerText.text = second.ToString();
+        if (second >= 0)
+        {
+            timerText.text = second.ToString();
+        }
+        else
+        {
+            GameObject.Find("BattleModeManager").GetComponent<BattleModeManager>().Judge();
+        }
     }
 }

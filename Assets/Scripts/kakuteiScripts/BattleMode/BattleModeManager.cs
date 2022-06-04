@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BattleModeManager : MonoBehaviour
 {
@@ -8,8 +9,15 @@ public class BattleModeManager : MonoBehaviour
     private GameObject _player1Object;
     private float _player1Hp;
 
+    //player2の情報を読み取る変数
+    private float _player2Hp = 1;      // ここ直す
+
     //timeの情報を読み取る変数
     private int _time;
+
+    //勝利テキスト表示
+    public TextMeshProUGUI playerWinText;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -19,22 +27,37 @@ public class BattleModeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _player1Hp = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().hp;
-
-        _time = GameObject.Find("Second").GetComponent<TimerScript>().second;
-
-        Judge();
         
     }
 
-    void Judge()
+    public void Player1Die()
     {
-        if (_player1Hp <= 0 || _time <= 0)
+        
+        playerWinText.text = "PLAYER2 WIN!";
+    }
+
+    public void Player2Die()
+    {
+        playerWinText.text = "PLAYER1 WIN!";
+
+    }
+
+    public void Judge()
+    {
+        _player1Hp = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().hp;
+        _player2Hp = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2contoroller>().hp;
+
+        if (_player1Hp > _player2Hp)
         {
-            Debug.Log("end");
+            playerWinText.text = "PLAYER1 WIN!";
         }
-        else if (_player1Hp >= 0 && _time >= 0)
+        else if (_player1Hp < _player2Hp)
         {
+            playerWinText.text = "PLAYER2 WIN!";
+        }
+        else
+        {
+            playerWinText.text = "DRAW GAME";
 
         }
     }
