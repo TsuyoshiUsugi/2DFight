@@ -45,7 +45,7 @@ public class BattleModeManager : MonoBehaviour
     public void Judge()
     {
         _player1Hp = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().hp;
-        _player2Hp = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2contoroller>().hp;
+        _player2Hp = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2controller>().hp;
 
         if (_player1Hp > _player2Hp)
         {

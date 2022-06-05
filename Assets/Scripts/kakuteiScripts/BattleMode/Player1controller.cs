@@ -83,7 +83,7 @@ public class Player1controller : MonoBehaviour
         {
 
             Debug.Log(hitEnemy.gameObject.name + "Ç…çUåÇ");
-            hitEnemy.GetComponent<Player2contoroller>().Ondamage(at);
+            hitEnemy.GetComponent<Player2controller>().Ondamage(at);
 
 
         }
