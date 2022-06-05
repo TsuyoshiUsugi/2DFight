@@ -38,9 +38,10 @@ public class Player2UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+            
         if (rtHp.sizeDelta.x <= 0)
         {
-            GameObject.Find("BattleModeManager").GetComponent<BattleModeManager>().Player1Die();
+            GameObject.Find("BattleModeManager").GetComponent<BattleModeManager>().Player2Die();
         }
     }
 

@@ -20,11 +20,14 @@ public class Player2controller : MonoBehaviour
     public float jumpForce = 2500f;
     private int jumpCount = 0;
 
+    private Player2UI player2UIscript;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        player2UIscript = GameObject.Find("Player2UI").GetComponent<Player2UI>();
     }
 
     // Update is called once per frame
@@ -95,6 +98,7 @@ public class Player2controller : MonoBehaviour
     public void Ondamage(float damage)
     {
         hp -= damage;
+        player2UIscript.ReadHp(damage);
 
         if (hp <= 0)
         {
@@ -137,6 +141,7 @@ public class Player2controller : MonoBehaviour
 
                 animator.SetTrigger("Ability");
                 mp--;
+                player2UIscript.ReadMp(1);
             }
         }
     }

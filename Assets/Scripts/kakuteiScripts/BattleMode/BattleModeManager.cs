@@ -10,7 +10,7 @@ public class BattleModeManager : MonoBehaviour
     private float _player1Hp;
 
     //player2‚Ìî•ñ‚ğ“Ç‚İæ‚é•Ï”
-    private float _player2Hp = 1;      // ‚±‚±’¼‚·
+    private float _player2Hp;      
 
     //time‚Ìî•ñ‚ğ“Ç‚İæ‚é•Ï”
     private int _time;
