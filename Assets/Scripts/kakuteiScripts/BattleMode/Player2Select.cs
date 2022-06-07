@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player2Select : MonoBehaviour
 {
@@ -13,37 +14,102 @@ public class Player2Select : MonoBehaviour
     public Sprite sprite;
     public Sprite sprite1;
     public Sprite sprite2;
+
+    public bool ready = false;
+
+    public Text ready2;
+
+    private int state;
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer.sprite = sprite;
+
+        ready2.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        SelectButton();
 
+        ReadyButton();
     }
 
-    private void OnMouseDown()
+ 
+    public void ReadyButton()
     {
-        if (spriteRenderer.sprite == sprite2)
+        if (Input.GetButtonDown("Attack2") && ready == false)
         {
-            spriteRenderer.sprite = sprite;
-            Debug.Log("change");
-            chara2 = 0;
+            ready = true;
+            ready2.enabled = true;
         }
-        else if (spriteRenderer.sprite == sprite)
+        else if (Input.GetButtonDown("Attack2") && ready == true)
         {
-            spriteRenderer.sprite = sprite1;
-            Debug.Log("change1");
-            chara2 = 1;
-        }
-        else if (spriteRenderer.sprite == sprite1)
-        {
-            spriteRenderer.sprite = sprite2;
-            Debug.Log("change2");
-            chara2 = 2;
+            ready = false;
+            ready2.enabled = false;
         }
     }
+
+    public void SelectButton()
+    {
+        if (ready == false)
+        {
+
+
+            if (state == 0)
+            {
+                if (Input.GetButtonDown("Right2") == true)
+                {
+                    state++;
+                    ImageState();
+                }
+
+            }
+            else if (state == 2)
+            {
+                if (Input.GetButtonDown("Left2") == true)
+                {
+                    state--;
+                    ImageState();
+                }
+            }
+            else
+            {
+                if (Input.GetButtonDown("Right2") == true)
+                {
+                    state++;
+                    ImageState();
+                }
+                else if (Input.GetButtonDown("Left2") == true)
+                {
+                    state--;
+                    ImageState();
+                }
+            }
+        }
+    }
+
+    public void ImageState()
+    {
+        switch (state)
+        {
+            case 0:
+                spriteRenderer.sprite = sprite;
+                chara2 = 0;
+                break;
+            case 1:
+                spriteRenderer.sprite = sprite1;
+                chara2 = 1;
+                break;
+            case 2:
+                spriteRenderer.sprite = sprite2;
+                chara2 = 2;
+                break;
+
+
+        }
+
+    }
+
 }

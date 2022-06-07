@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player1Select : MonoBehaviour
 {
@@ -13,70 +14,78 @@ public class Player1Select : MonoBehaviour
     public Sprite sprite;
     public Sprite sprite1;
     public Sprite sprite2;
-    
+
+    public bool ready = false;
+
+    public Text ready1; 
 
     private int state;
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer.sprite = sprite;
+        ready1.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         SelectButton();
+
+        ReadyButton();
     }
 
-    private void OnMouseDown()
+  
+
+    public void ReadyButton()
     {
-        if (spriteRenderer.sprite == sprite2)
+        if (Input.GetButtonDown("Attack1") && ready == false)
         {
-            spriteRenderer.sprite = sprite;
-            chara = 0;
+            ready = true;
+            ready1.enabled = true;
         }
-        else if (spriteRenderer.sprite == sprite)
+        else if (Input.GetButtonDown("Attack1") && ready == true)
         {
-            spriteRenderer.sprite = sprite1;
-            chara = 1;
-        }
-        else if (spriteRenderer.sprite == sprite1)
-        {
-            spriteRenderer.sprite = sprite2;
-            chara = 2;
+            ready = false;
+            ready1.enabled = false;
         }
     }
 
     public void SelectButton()
     {
-        if (state == 0)
+        if (ready == false)
         {
-            if (Input.GetButtonDown("Right1") == true)
+
+
+            if (state == 0)
             {
-                state++;
-                ImageState();
+                if (Input.GetButtonDown("Right1") == true)
+                {
+                    state++;
+                    ImageState();
+                }
+
             }
-           
-        }
-        else if (state == 2)
-        {
-           if (Input.GetButtonDown("Left1") == true)
+            else if (state == 2)
             {
-                state--;
-                ImageState();
+                if (Input.GetButtonDown("Left1") == true)
+                {
+                    state--;
+                    ImageState();
+                }
             }
-        }
-        else
-        {
-            if(Input.GetButtonDown("Right1") == true)
+            else
             {
-                state++;
-                ImageState();
-            }
-            else if (Input.GetButtonDown("Left1") == true)
-            {
-                state--;
-                ImageState();
+                if (Input.GetButtonDown("Right1") == true)
+                {
+                    state++;
+                    ImageState();
+                }
+                else if (Input.GetButtonDown("Left1") == true)
+                {
+                    state--;
+                    ImageState();
+                }
             }
         }
     }
