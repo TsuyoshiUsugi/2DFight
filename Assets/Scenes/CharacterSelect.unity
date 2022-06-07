@@ -1073,7 +1073,7 @@ GameObject:
   - component: {fileID: 1107462216}
   - component: {fileID: 1107462215}
   m_Layer: 5
-  m_Name: chooseYourCharacter
+  m_Name: SelectYourCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1131,7 +1131,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CHOOSE YOUR CHARACTER
+  m_Text: SELECT YOUR CHARACTER
 --- !u!222 &1107462216
 CanvasRenderer:
   m_ObjectHideFlags: 0
