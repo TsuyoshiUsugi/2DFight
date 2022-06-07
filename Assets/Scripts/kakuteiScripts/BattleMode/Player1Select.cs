@@ -17,7 +17,8 @@ public class Player1Select : MonoBehaviour
 
     public bool ready = false;
 
-    public Text ready1; 
+    public Text ready1;
+    public Text ready2;
 
     private int state;
     // Start is called before the first frame update
@@ -44,7 +45,7 @@ public class Player1Select : MonoBehaviour
             ready = true;
             ready1.enabled = true;
         }
-        else if (Input.GetButtonDown("Attack1") && ready == true)
+        else if (Input.GetButtonDown("Attack1") && ready == true && ready1.enabled == false)
         {
             ready = false;
             ready1.enabled = false;

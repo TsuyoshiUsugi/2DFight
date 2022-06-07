@@ -18,6 +18,7 @@ public class Player2Select : MonoBehaviour
     public bool ready = false;
 
     public Text ready2;
+    public Text ready1;
 
     private int state;
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class Player2Select : MonoBehaviour
         spriteRenderer.sprite = sprite;
 
         ready2.enabled = false;
+
     }
 
     // Update is called once per frame
@@ -44,7 +46,7 @@ public class Player2Select : MonoBehaviour
             ready = true;
             ready2.enabled = true;
         }
-        else if (Input.GetButtonDown("Attack2") && ready == true)
+        else if (Input.GetButtonDown("Attack2") && ready == true && ready1.enabled == false)
         {
             ready = false;
             ready2.enabled = false;
