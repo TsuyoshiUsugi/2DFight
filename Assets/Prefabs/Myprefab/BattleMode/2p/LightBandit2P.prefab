@@ -200,8 +200,8 @@ MonoBehaviour:
   player1Layer:
     serializedVersion: 2
     m_Bits: 2048
-  moveSpeed: 3
-  hp: 10
-  at: 1
+  moveSpeed: 4
+  hp: 200
+  at: 35
   mp: 10
   jumpForce: 2500

@@ -9,24 +9,34 @@ public class TimerScript : MonoBehaviour
     public TextMeshProUGUI timerText;
     public float totalTime;
     public int second;
+
+    public bool isPlaying;
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        isPlaying = GameObject.Find("BattleModeManager").GetComponent<BattleModeManager>().isPlaying;
     }
 
     // Update is called once per frame
     void Update()
     {
-        totalTime -= Time.deltaTime;
-        second = (int)totalTime;
-        if (second >= 0)
+        isPlaying = GameObject.Find("BattleModeManager").GetComponent<BattleModeManager>().isPlaying;
+        
+        if (isPlaying == true)
         {
-            timerText.text = second.ToString();
-        }
-        else
-        {
-            GameObject.Find("BattleModeManager").GetComponent<BattleModeManager>().Judge();
+
+
+            totalTime -= Time.deltaTime;
+            second = (int)totalTime;
+            if (second >= 0)
+            {
+                timerText.text = second.ToString();
+            }
+            else
+            {
+                GameObject.Find("BattleModeManager").GetComponent<BattleModeManager>().Judge();
+            }
         }
     }
 }

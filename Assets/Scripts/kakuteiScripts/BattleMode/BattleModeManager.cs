@@ -17,11 +17,19 @@ public class BattleModeManager : MonoBehaviour
 
     //勝利テキスト表示
     public TextMeshProUGUI playerWinText;
-    
+
+    public bool isPlaying = false;
+
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        isPlaying = true;
+    }
+
     void Start()
     {
+        
     }
 
     // Update is called once per frame
@@ -32,33 +40,51 @@ public class BattleModeManager : MonoBehaviour
 
     public void Player1Die()
     {
-        
-        playerWinText.text = "PLAYER2 WIN!";
+        if (isPlaying == true)
+        {
+            playerWinText.text = "PLAYER2 WIN!";
+            isPlaying = false;
+
+        }
     }
 
     public void Player2Die()
     {
-        playerWinText.text = "PLAYER1 WIN!";
+        if (isPlaying == true)
+        {
+            playerWinText.text = "PLAYER1 WIN!";
+            isPlaying = false;
+        }
 
     }
 
     public void Judge()
     {
-        _player1Hp = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().hp;
-        _player2Hp = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2controller>().hp;
+        if (isPlaying == true)
+        {
+            _player1Hp = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().hp;
+            _player2Hp = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2controller>().hp;
 
-        if (_player1Hp > _player2Hp)
+        }
+
+        if (_player1Hp > _player2Hp && isPlaying == true)
         {
             playerWinText.text = "PLAYER1 WIN!";
+            isPlaying = false;
         }
-        else if (_player1Hp < _player2Hp)
+        else if (_player1Hp < _player2Hp && isPlaying == true)
         {
             playerWinText.text = "PLAYER2 WIN!";
+            isPlaying = false;
         }
         else
         {
-            playerWinText.text = "DRAW GAME";
+            if (isPlaying == true)
+            {
+                playerWinText.text = "DRAW GAME";
+                isPlaying = false;
 
+            }
         }
     }
         
