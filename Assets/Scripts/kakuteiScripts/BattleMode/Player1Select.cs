@@ -17,10 +17,13 @@ public class Player1Select : MonoBehaviour
 
     public bool ready = false;
 
+
     public Text ready1;
     public Text ready2;
 
     private int state;
+    float buttonTrigger;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,13 +57,15 @@ public class Player1Select : MonoBehaviour
 
     public void SelectButton()
     {
+        float downButton = Input.GetAxis("Horizontal1");
+
         if (ready == false)
         {
 
 
             if (state == 0)
             {
-                if (Input.GetButtonDown("Right1") == true)
+                if (downButton > 0 && buttonTrigger == 0.0f)
                 {
                     state++;
                     ImageState();
@@ -69,7 +74,7 @@ public class Player1Select : MonoBehaviour
             }
             else if (state == 2)
             {
-                if (Input.GetButtonDown("Left1") == true)
+                if (downButton < 0 && buttonTrigger == 0.0f)
                 {
                     state--;
                     ImageState();
@@ -77,17 +82,19 @@ public class Player1Select : MonoBehaviour
             }
             else
             {
-                if (Input.GetButtonDown("Right1") == true)
+                if (downButton > 0 && buttonTrigger == 0.0f)
                 {
                     state++;
                     ImageState();
                 }
-                else if (Input.GetButtonDown("Left1") == true)
+                else if (downButton < 0 && buttonTrigger == 0.0f)
                 {
                     state--;
                     ImageState();
                 }
             }
+
+            buttonTrigger = downButton;
         }
     }
 
