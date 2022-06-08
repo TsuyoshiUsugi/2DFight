@@ -51,7 +51,7 @@ public class Player1controller : MonoBehaviour
     void Move()
     {
         float x = Input.GetAxisRaw("Horizontal1");
-
+        
         if (x > 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
