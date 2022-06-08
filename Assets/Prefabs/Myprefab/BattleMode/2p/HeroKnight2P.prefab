@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 2954943115203549148}
   - component: {fileID: 2954943115203549151}
   - component: {fileID: 2954943115203549150}
-  - component: {fileID: 2954943115203549145}
   - component: {fileID: 2954943115203549144}
   m_Layer: 10
   m_Name: HeroKnight2P
@@ -184,29 +183,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2527275, y: 0.8197273}
   m_EdgeRadius: 0
---- !u!114 &2954943115203549145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2954943115203549147}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e7b4785d4550446abaaf3b7ce6f5bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPoint: {fileID: 2954943114873946038}
-  attackRadius: 0.26
-  player2Layer:
-    serializedVersion: 2
-    m_Bits: 1024
-  moveSpeed: 3
-  hp: 200
-  at: 20
-  mp: 10
-  jumpForce: 3000
-  jumpCount: 0
 --- !u!114 &2954943115203549144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +201,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   moveSpeed: 3
-  hp: 3
-  at: 1
+  hp: 200
+  at: 20
   mp: 10
   jumpForce: 3000

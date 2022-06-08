@@ -44,7 +44,7 @@ public class BattleModeManager : MonoBehaviour
         {
             playerWinText.text = "PLAYER2 WIN!";
             isPlaying = false;
-
+            GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
         }
     }
 
@@ -54,6 +54,7 @@ public class BattleModeManager : MonoBehaviour
         {
             playerWinText.text = "PLAYER1 WIN!";
             isPlaying = false;
+            GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
         }
 
     }
@@ -71,11 +72,13 @@ public class BattleModeManager : MonoBehaviour
         {
             playerWinText.text = "PLAYER1 WIN!";
             isPlaying = false;
+            GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
         }
         else if (_player1Hp < _player2Hp && isPlaying == true)
         {
             playerWinText.text = "PLAYER2 WIN!";
             isPlaying = false;
+            GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
         }
         else
         {
@@ -83,7 +86,7 @@ public class BattleModeManager : MonoBehaviour
             {
                 playerWinText.text = "DRAW GAME";
                 isPlaying = false;
-
+                GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
             }
         }
     }
