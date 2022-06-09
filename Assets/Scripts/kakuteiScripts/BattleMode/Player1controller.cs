@@ -20,6 +20,10 @@ public class Player1controller : MonoBehaviour
     public float jumpForce = 250f;
     public int jumpCount = 0;
 
+    [Header("ノックバック")]
+    public Vector3 force1 = new Vector3(100f, 1000f, 0f);
+    public Vector3 force2 = new Vector3(-100f, 1000f , 0f);
+
     private Player1UI player1UIscript;
 
     // Start is called before the first frame update
@@ -54,11 +58,11 @@ public class Player1controller : MonoBehaviour
         
         if (x > 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(1, 1, 1);
         }
         else if (x < 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(-1, 1, 1);
         }
         animator.SetFloat("Speed", Mathf.Abs(x));
         rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
@@ -81,10 +85,19 @@ public class Player1controller : MonoBehaviour
         Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player2Layer);
         foreach (Collider2D hitEnemy in hitEnemys)
         {
+            float x = transform.localScale.x;
 
             Debug.Log(hitEnemy.gameObject.name + "に攻撃");
             hitEnemy.GetComponent<Player2controller>().Ondamage(at);
 
+            if (x > 0)
+            {
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(force1);
+            }
+            else if (x < 0)
+            {
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(force2);
+            }
 
         }
     }
