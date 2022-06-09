@@ -86,15 +86,18 @@ public class SelectButton2 : MonoBehaviour
         {
             if (state == 0 && Input.GetAxisRaw("Attack1") == 1)
             {
-                SceneManager.LoadScene("BattleMode");
+                //SceneManager.LoadScene("BattleMode");
+                FadeManager.Instance.LoadScene("BattleMode", 1.0f);
             }
             else if (state == 1 && Input.GetAxisRaw("Attack1") == 1)
             {
-                SceneManager.LoadScene("CharacterSelect");
+                //SceneManager.LoadScene("CharacterSelect");
+                FadeManager.Instance.LoadScene("CharacterSelect", 1.0f);
             }
             else if (state == 2 && Input.GetAxisRaw("Attack1") == 1)
             {
-                SceneManager.LoadScene("Opening");
+                //SceneManager.LoadScene("Opening");
+                FadeManager.Instance.LoadScene("Opening", 1.0f);
             }
         }
     }

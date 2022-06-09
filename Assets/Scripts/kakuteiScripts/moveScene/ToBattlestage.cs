@@ -51,14 +51,15 @@ public class ToBattlestage : MonoBehaviour
     {
         SelectedText();
 
-        Invoke("Scene", 5.0f);
+        //Invoke("Scene", 5.0f);
  
 
+        FadeManager.Instance.LoadScene("BattleMode", 2.0f);
     }
     void Scene()
     {
 
-        SceneManager.LoadScene("BattleMode");
+        //SceneManager.LoadScene("BattleMode");
     }
 
     void SelectedText()

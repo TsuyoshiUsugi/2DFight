@@ -91,11 +91,13 @@ public class SelectBotton : MonoBehaviour
     {
         if (state == 0 && Input.GetAxisRaw("Attack1") == 1)
         {
-            SceneManager.LoadScene("openingTo1");
+            
+            FadeManager.Instance.LoadScene("openingTo1", 1.0f);
         }
         else if (state == 1 && Input.GetAxisRaw("Attack1") == 1)
         {
-            SceneManager.LoadScene("CharacterSelect");
+            //SceneManager.LoadScene("CharacterSelect");
+            FadeManager.Instance.LoadScene("CharacterSelect", 1.0f);
         }
         else if (state == 2 && Input.GetAxisRaw("Attack1") == 1)
         {
