@@ -21,8 +21,8 @@ public class Player1controller : MonoBehaviour
     public int jumpCount = 0;
 
     [Header("ノックバック")]
-    public Vector3 force1 = new Vector3(100f, 1000f, 0f);
-    public Vector3 force2 = new Vector3(-100f, 1000f , 0f);
+    public Vector3 force1 = new Vector3(0, 0, 0);
+    public Vector3 force2 = new Vector3(0, 0, 0);
 
     private Player1UI player1UIscript;
 
@@ -73,6 +73,7 @@ public class Player1controller : MonoBehaviour
     void Attack()
     {
         if (Input.GetButtonDown("Attack1"))
+            
         {
             animator.SetTrigger("isAttack");
 
@@ -92,11 +93,13 @@ public class Player1controller : MonoBehaviour
 
             if (x > 0)
             {
-                hitEnemy.GetComponent<Rigidbody2D>().AddForce(force1);
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(force1, ForceMode2D.Impulse);
+                
             }
             else if (x < 0)
             {
-                hitEnemy.GetComponent<Rigidbody2D>().AddForce(force2);
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(force2, ForceMode2D.Impulse);
+                
             }
 
         }

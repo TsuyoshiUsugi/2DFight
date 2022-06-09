@@ -9,20 +9,21 @@ public class SelectBotton : MonoBehaviour
     public GameObject arcadeMode;
     public GameObject battleMode;
     public GameObject quit;
+    public AudioClip sound1;
 
     Text arcadeText;
     Text battleText;
     Text quitText;
 
     float buttonTrigger;
-   
+    AudioSource audioSource;
 
     public float state = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
         arcadeText = arcadeMode.GetComponent<Text>();
         battleText = battleMode.GetComponent<Text>();
         quitText = quit.GetComponent<Text>();
@@ -57,7 +58,8 @@ public class SelectBotton : MonoBehaviour
             arcadeText.color = new Color(0f, 0f, 0f, 0.46f);
             battleText.color = new Color(255f, 255f, 255f, 255f);
             state = 1;
-            
+            audioSource.PlayOneShot(sound1);
+
         }
         else if (state == 1)
         {
@@ -66,14 +68,15 @@ public class SelectBotton : MonoBehaviour
                 battleText.color = new Color(0f, 0f, 0f, 0.46f);
                 quitText.color = new Color(255f, 255f, 255f, 255f);
                 state = 2;
-               
+                audioSource.PlayOneShot(sound1);
+
             }
             else if (downButton > 0 && buttonTrigger == 0.0f)
             {
                 battleText.color = new Color(0f, 0f, 0f, 0.46f);
                 arcadeText.color = new Color(255f, 255f, 255f, 255f);
                 state = 0;
-                
+                audioSource.PlayOneShot(sound1);
             }
 
         } 
@@ -82,6 +85,7 @@ public class SelectBotton : MonoBehaviour
             quitText.color = new Color(0f, 0f, 0f, 0.46f);
             battleText.color = new Color(255f, 255f, 255f, 255f);
             state = 1;
+            audioSource.PlayOneShot(sound1);
         }
 
         buttonTrigger = downButton;

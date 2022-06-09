@@ -129,8 +129,8 @@ MonoBehaviour:
   mp: 10
   jumpForce: 250
   jumpCount: 0
-  force1: {x: 1000, y: 0, z: 0}
-  force2: {x: -1000, y: 0, z: 0}
+  force1: {x: 10, y: 3, z: 0}
+  force2: {x: -10, y: 3}
 --- !u!61 &7534150398395360637
 BoxCollider2D:
   m_ObjectHideFlags: 0
