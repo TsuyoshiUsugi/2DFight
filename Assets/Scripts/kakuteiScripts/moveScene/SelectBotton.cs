@@ -10,6 +10,7 @@ public class SelectBotton : MonoBehaviour
     public GameObject battleMode;
     public GameObject quit;
     public AudioClip sound1;
+    public AudioClip sound2;
 
     Text arcadeText;
     Text battleText;
@@ -93,18 +94,20 @@ public class SelectBotton : MonoBehaviour
 
     void Decide()
     {
-        if (state == 0 && Input.GetAxisRaw("Attack1") == 1)
+        if (state == 0 && Input.GetButtonDown("Attack1")) 
         {
-            
+            audioSource.PlayOneShot(sound2);
             FadeManager.Instance.LoadScene("openingTo1", 1.0f);
         }
-        else if (state == 1 && Input.GetAxisRaw("Attack1") == 1)
+        else if (state == 1 && Input.GetButtonDown("Attack1"))
         {
             //SceneManager.LoadScene("CharacterSelect");
             FadeManager.Instance.LoadScene("CharacterSelect", 1.0f);
+            audioSource.PlayOneShot(sound2);
         }
-        else if (state == 2 && Input.GetAxisRaw("Attack1") == 1)
+        else if (state == 2 && Input.GetButtonDown("Attack1"))
         {
+            audioSource.PlayOneShot(sound2);
             UnityEditor.EditorApplication.isPlaying = false;
 
             Application.Quit();
