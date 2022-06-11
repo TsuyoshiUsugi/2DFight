@@ -101,22 +101,13 @@ public class SelectBotton : MonoBehaviour
         }
         else if (state == 1 && Input.GetButtonDown("Attack1"))
         {
-<<<<<<< HEAD
-            //SceneManager.LoadScene("CharacterSelect");
+            audioSource.PlayOneShot(sound2);
             FadeManager.Instance.LoadScene("CharacterSelect", 1.0f);
-            audioSource.PlayOneShot(sound2);
-=======
-            audioSource.PlayOneShot(sound2);
-            //FadeManager.Instance.LoadScene("CharacterSelect", 1.0f);
->>>>>>> 8c977812dbb4ba5f076f85c826610c73067b7b69
         }
         else if (state == 2 && Input.GetButtonDown("Attack1"))
         {
             audioSource.PlayOneShot(sound2);
-<<<<<<< HEAD
-=======
 
->>>>>>> 8c977812dbb4ba5f076f85c826610c73067b7b69
             UnityEditor.EditorApplication.isPlaying = false;
 
             Application.Quit();
