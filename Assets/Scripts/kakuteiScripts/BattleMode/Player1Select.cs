@@ -21,6 +21,10 @@ public class Player1Select : MonoBehaviour
     public Text ready1;
     public Text ready2;
 
+    public AudioSource audioSource;
+    public AudioClip sound1;
+    public AudioClip sound2;
+
     private int state;
     float buttonTrigger;
 
@@ -29,6 +33,7 @@ public class Player1Select : MonoBehaviour
     {
         spriteRenderer.sprite = sprite;
         ready1.enabled = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -58,7 +63,7 @@ public class Player1Select : MonoBehaviour
     public void SelectButton()
     {
         float downButton = Input.GetAxis("Horizontal1");
-
+        
         if (ready == false)
         {
 
@@ -69,6 +74,7 @@ public class Player1Select : MonoBehaviour
                 {
                     state++;
                     ImageState();
+                    //audioSource.PlayOneShot(sound1);
                 }
 
             }
@@ -78,6 +84,7 @@ public class Player1Select : MonoBehaviour
                 {
                     state--;
                     ImageState();
+                    //audioSource.PlayOneShot(sound1);
                 }
             }
             else
@@ -86,11 +93,13 @@ public class Player1Select : MonoBehaviour
                 {
                     state++;
                     ImageState();
+                    //audioSource.PlayOneShot(sound1);
                 }
                 else if (downButton < 0 && buttonTrigger == 0.0f)
                 {
                     state--;
                     ImageState();
+                    //audioSource.PlayOneShot(sound1);
                 }
             }
 

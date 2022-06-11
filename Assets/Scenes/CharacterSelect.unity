@@ -877,6 +877,9 @@ MonoBehaviour:
   ready: 0
   ready1: {fileID: 1377480365}
   ready2: {fileID: 0}
+  audioSource: {fileID: 0}
+  sound1: {fileID: 8300000, guid: 6293f34466aef644b8962d3fe6eb324b, type: 3}
+  sound2: {fileID: 8300000, guid: c031d3a9fcdc4b24baa7ba2074a61140, type: 3}
 --- !u!61 &582937952
 BoxCollider2D:
   m_ObjectHideFlags: 0
