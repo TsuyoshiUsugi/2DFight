@@ -64,6 +64,8 @@ public class Player1Select : MonoBehaviour
     {
         float downButton = Input.GetAxis("Horizontal1");
         
+
+
         if (ready == false)
         {
 
@@ -74,7 +76,7 @@ public class Player1Select : MonoBehaviour
                 {
                     state++;
                     ImageState();
-                    //audioSource.PlayOneShot(sound1);
+                    audioSource.PlayOneShot(sound1);
                 }
 
             }
@@ -84,7 +86,7 @@ public class Player1Select : MonoBehaviour
                 {
                     state--;
                     ImageState();
-                    //audioSource.PlayOneShot(sound1);
+                    audioSource.PlayOneShot(sound1);
                 }
             }
             else
@@ -93,13 +95,13 @@ public class Player1Select : MonoBehaviour
                 {
                     state++;
                     ImageState();
-                    //audioSource.PlayOneShot(sound1);
+                    audioSource.PlayOneShot(sound1);
                 }
                 else if (downButton < 0 && buttonTrigger == 0.0f)
                 {
                     state--;
                     ImageState();
-                    //audioSource.PlayOneShot(sound1);
+                    audioSource.PlayOneShot(sound1);
                 }
             }
 
