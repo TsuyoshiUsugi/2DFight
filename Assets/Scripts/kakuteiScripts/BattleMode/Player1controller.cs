@@ -6,6 +6,7 @@ public class Player1controller : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator animator;
+    AudioSource audioSource;
 
     //当たり判定を格納する変数を用意
     public Transform attackPoint;
@@ -22,7 +23,13 @@ public class Player1controller : MonoBehaviour
 
     [Header("ノックバック")]
     public float force3 = 0;
-    
+
+    [Header("サウンド")]
+    public AudioClip attack1;
+    public AudioClip jump;
+    public AudioClip Ability1;
+
+
 
     private Player1UI player1UIscript;
     float passedTime = 0;
@@ -32,6 +39,7 @@ public class Player1controller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player1UIscript = GameObject.Find("Player1UI").GetComponent<Player1UI>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -76,6 +84,7 @@ public class Player1controller : MonoBehaviour
             
         {
             animator.SetTrigger("isAttack");
+            audioSource.PlayOneShot(attack1);
 
         }
     }
@@ -135,7 +144,7 @@ public class Player1controller : MonoBehaviour
         {
             rb.AddForce(transform.up * jumpForce);
             jumpCount++;
-            
+            audioSource.PlayOneShot(jump);
 
         }
     }
@@ -160,6 +169,7 @@ public class Player1controller : MonoBehaviour
                 animator.SetTrigger("Ability");
                 mp--;
                 player1UIscript.ReadMp(1);
+                audioSource.PlayOneShot(Ability1);
             }
         }
     }

@@ -51,7 +51,7 @@ public class BattleModeManager : MonoBehaviour
                 isPlaying = false;
             }
 
-            if (passedTime > 10)
+            if (passedTime > 6)
             {
                 GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
 
@@ -72,7 +72,7 @@ public class BattleModeManager : MonoBehaviour
                 isPlaying = false;
             }
 
-            if (passedTime > 10)
+            if (passedTime > 6)
             {
 
                 GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
