@@ -16,17 +16,23 @@ public class Player2Select : MonoBehaviour
     public Sprite sprite2;
 
     public bool ready = false;
+    public AudioSource audioSource;
+    public AudioClip sound1;
+    public AudioClip sound2;
 
     public Text ready2;
     public Text ready1;
 
     private int state;
+    float buttonTrigger;
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer.sprite = sprite;
 
         ready2.enabled = false;
+
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -43,11 +49,13 @@ public class Player2Select : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack2") && ready == false)
         {
+            audioSource.PlayOneShot(sound2);
             ready = true;
             ready2.enabled = true;
         }
         else if (Input.GetButtonDown("Attack2") && ready == true && ready1.enabled == false)
         {
+            audioSource.PlayOneShot(sound2);
             ready = false;
             ready2.enabled = false;
         }
@@ -55,40 +63,50 @@ public class Player2Select : MonoBehaviour
 
     public void SelectButton()
     {
+        float downButton = Input.GetAxis("Horizontal2");
+
+
+
         if (ready == false)
         {
 
 
             if (state == 0)
             {
-                if (Input.GetButtonDown("Right2") == true)
+                if (downButton > 0 && buttonTrigger == 0.0f)
                 {
                     state++;
                     ImageState();
+                    audioSource.PlayOneShot(sound1);
                 }
 
             }
             else if (state == 2)
             {
-                if (Input.GetButtonDown("Left2") == true)
+                if (downButton < 0 && buttonTrigger == 0.0f)
                 {
                     state--;
                     ImageState();
+                    audioSource.PlayOneShot(sound1);
                 }
             }
             else
             {
-                if (Input.GetButtonDown("Right2") == true)
+                if (downButton > 0 && buttonTrigger == 0.0f)
                 {
                     state++;
                     ImageState();
+                    audioSource.PlayOneShot(sound1);
                 }
-                else if (Input.GetButtonDown("Left2") == true)
+                else if (downButton < 0 && buttonTrigger == 0.0f)
                 {
                     state--;
                     ImageState();
+                    audioSource.PlayOneShot(sound1);
                 }
             }
+
+            buttonTrigger = downButton;
         }
     }
 

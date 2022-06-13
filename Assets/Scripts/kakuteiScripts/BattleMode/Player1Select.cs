@@ -50,11 +50,13 @@ public class Player1Select : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack1") && ready == false)
         {
+            audioSource.PlayOneShot(sound2);
             ready = true;
             ready1.enabled = true;
         }
-        else if (Input.GetButtonDown("Attack1") && ready == true && ready1.enabled == false)
+        else if (Input.GetButtonDown("Attack1") && ready == true && ready2.enabled == false)
         {
+            audioSource.PlayOneShot(sound2);
             ready = false;
             ready1.enabled = false;
         }

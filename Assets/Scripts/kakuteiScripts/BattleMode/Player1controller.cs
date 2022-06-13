@@ -21,11 +21,11 @@ public class Player1controller : MonoBehaviour
     public int jumpCount = 0;
 
     [Header("ノックバック")]
-    public Vector3 force1 = new Vector3(0, 0, 0);
-    public Vector3 force2 = new Vector3(0, 0, 0);
+    public float force3 = 0;
+    
 
     private Player1UI player1UIscript;
-
+    float passedTime = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -88,18 +88,22 @@ public class Player1controller : MonoBehaviour
         {
             float x = transform.localScale.x;
 
-            Debug.Log(hitEnemy.gameObject.name + "に攻撃");
+            
             hitEnemy.GetComponent<Player2controller>().Ondamage(at);
 
             if (x > 0)
             {
-                hitEnemy.GetComponent<Rigidbody2D>().AddForce(force1, ForceMode2D.Impulse);
+
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * -force3);
+
                 
+
+
             }
             else if (x < 0)
             {
-                hitEnemy.GetComponent<Rigidbody2D>().AddForce(force2, ForceMode2D.Impulse);
-                
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * force3);
+
             }
 
         }
@@ -165,8 +169,24 @@ public class Player1controller : MonoBehaviour
 
     private void DieBata()
     {
+
         if (hp <= 0)
-        Destroy(gameObject);
+        {
+            animator.SetBool("Die", true);
+            passedTime += Time.deltaTime;
+
+            if (passedTime > 0.5f)
+            {
+                Time.timeScale = 1;
+            }
+            else
+            {
+
+                Time.timeScale = 0.1f;
+            }
+
+
+        }
 
     }
 

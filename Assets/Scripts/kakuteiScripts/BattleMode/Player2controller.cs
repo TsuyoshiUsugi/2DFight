@@ -25,7 +25,7 @@ public class Player2controller : MonoBehaviour
     public Vector3 force2 = new Vector3(-100f, 1000f, 0f);
 
     private Player2UI player2UIscript;
-
+    float passedTime = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,7 +87,7 @@ public class Player2controller : MonoBehaviour
         {
             float x = transform.localScale.x;
 
-            Debug.Log(hitEnemy.gameObject.name + "に攻撃");
+            
             hitEnemy.GetComponent<Player1controller>().Ondamage(at);
             if (x > 0)
             {
@@ -161,10 +161,28 @@ public class Player2controller : MonoBehaviour
 
     void DieBeta()
     {
+        
+
         if (hp <= 0)
-        Destroy(gameObject);
+        {
+            passedTime += Time.deltaTime;
+
+            if (passedTime > 0.5f)
+            {
+                Time.timeScale = 1;
+            }
+            else
+            {
+
+                Time.timeScale = 0.1f;
+            }
+
+            
+        }
 
     }
+
+    
 
     // ここからアビリティ一覧
 
