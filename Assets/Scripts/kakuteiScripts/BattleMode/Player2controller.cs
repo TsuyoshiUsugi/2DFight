@@ -21,8 +21,7 @@ public class Player2controller : MonoBehaviour
     private int jumpCount = 0;
 
     [Header("ノックバック")]
-    public Vector3 force1 = new Vector3(100f, 1000f, 0f);
-    public Vector3 force2 = new Vector3(-100f, 1000f, 0f);
+    public float force3 = 0;
 
     private Player2UI player2UIscript;
     float passedTime = 0;
@@ -91,11 +90,11 @@ public class Player2controller : MonoBehaviour
             hitEnemy.GetComponent<Player1controller>().Ondamage(at);
             if (x > 0)
             {
-                hitEnemy.GetComponent<Rigidbody2D>().AddForce(force1);
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * -force3);
             }
             else if (x < 0)
             {
-                hitEnemy.GetComponent<Rigidbody2D>().AddForce(force2);
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * force3);
 
             }
         }

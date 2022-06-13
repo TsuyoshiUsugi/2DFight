@@ -41,6 +41,7 @@ public class Player2UI : MonoBehaviour
             
         if (rtHp.sizeDelta.x <= 0)
         {
+            
             GameObject.Find("BattleModeManager").GetComponent<BattleModeManager>().Player2Die();
         }
     }

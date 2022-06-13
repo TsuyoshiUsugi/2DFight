@@ -96,9 +96,6 @@ public class Player1controller : MonoBehaviour
 
                 hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * -force3);
 
-                
-
-
             }
             else if (x < 0)
             {

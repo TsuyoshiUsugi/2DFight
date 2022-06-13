@@ -20,7 +20,7 @@ public class BattleModeManager : MonoBehaviour
 
     public bool isPlaying = false;
 
-
+    float passedTime;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -35,26 +35,49 @@ public class BattleModeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        Debug.Log(passedTime);
     }
 
     public void Player1Die()
     {
-        if (isPlaying == true)
+        passedTime += Time.deltaTime * 1;
+
+        if (passedTime > 3)
         {
-            playerWinText.text = "PLAYER2 WIN!";
-            isPlaying = false;
-            GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
+            if (isPlaying == true)
+            {
+                playerWinText.text = "PLAYER2 WIN!";
+                isPlaying = false;
+            }
+
+            if (passedTime > 10)
+            {
+                GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
+
+            }
         }
-    }
+
+        }
 
     public void Player2Die()
     {
-        if (isPlaying == true)
+        passedTime = 0;
+
+        if (passedTime > 3)
         {
-            playerWinText.text = "PLAYER1 WIN!";
-            isPlaying = false;
-            GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
+            if (isPlaying == true)
+            {
+                playerWinText.text = "PLAYER1 WIN!";
+                isPlaying = false;
+            }
+
+            if (passedTime > 10)
+            {
+
+                GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
+            }
+
         }
 
     }

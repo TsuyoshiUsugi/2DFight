@@ -206,5 +206,4 @@ MonoBehaviour:
   mp: 10
   jumpForce: 250
   jumpCount: 0
-  force1: {x: 10, y: 3, z: 0}
-  force2: {x: -10, y: 3, z: 0}
+  force3: 1000
