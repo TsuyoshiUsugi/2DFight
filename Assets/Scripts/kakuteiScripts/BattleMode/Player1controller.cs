@@ -57,6 +57,11 @@ public class Player1controller : MonoBehaviour
 
             Die();
         }
+        else
+        {
+            animator.SetFloat("Speed", 0);
+        }
+
     }
 
     void FixedUpdate()

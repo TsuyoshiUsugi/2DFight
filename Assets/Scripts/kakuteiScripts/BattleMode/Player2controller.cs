@@ -65,11 +65,16 @@ public class Player2controller : MonoBehaviour
     {
         if(isPlaying == true)
         Move();
+        else
+        {
+            animator.SetFloat("Speed", 0);
+        }
 
     }
 
     void Move()
     {
+        
         float x = Input.GetAxisRaw("Horizontal2");
 
         if (x > 0)
@@ -82,6 +87,7 @@ public class Player2controller : MonoBehaviour
         }
         animator.SetFloat("Speed", Mathf.Abs(x));
         rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
+        
 
     }
 
@@ -209,7 +215,7 @@ public class Player2controller : MonoBehaviour
         if (playerNumber == 1)
         {
 
-            mp -= 10;
+            mp -= 2;
             player2UIscript.ReadMp(mp);
             gameObject.layer = 12;
 
@@ -220,7 +226,8 @@ public class Player2controller : MonoBehaviour
     {
         if (playerNumber == 2)
         {
-            mp -= 10;
+
+            mp -= 2;
             player2UIscript.ReadMp(mp);
             gameObject.layer = 11;
         }
