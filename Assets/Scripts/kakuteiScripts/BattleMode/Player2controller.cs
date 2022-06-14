@@ -20,6 +20,7 @@ public class Player2controller : MonoBehaviour
     public float mp = 10;
     public float jumpForce = 2500f;
     private int jumpCount = 0;
+    public float playerNumber = 2;
 
     [Header("ノックバック")]
     public float force3 = 0;
@@ -29,11 +30,15 @@ public class Player2controller : MonoBehaviour
     public AudioClip jump;
     public AudioClip Ability1;
 
+    public bool isPlaying = true;
+    
     private Player2UI player2UIscript;
     float passedTime = 0;
     // Start is called before the first frame update
     void Start()
     {
+   
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player2UIscript = GameObject.Find("Player2UI").GetComponent<Player2UI>();
@@ -43,17 +48,22 @@ public class Player2controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Attack();
+        if (isPlaying == true)
+        {
 
-        Jump();
+            Attack();
 
-        Ability();
+            Jump();
 
-        Die();
+            Ability();
+
+            Die();
+        }
     }
 
     void FixedUpdate()
     {
+        if(isPlaying == true)
         Move();
 
     }
@@ -160,8 +170,7 @@ public class Player2controller : MonoBehaviour
             {
 
                 animator.SetTrigger("Ability");
-                mp--;
-                player2UIscript.ReadMp(1);
+               
                 audioSource.PlayOneShot(Ability1);
             }
         }
@@ -191,21 +200,30 @@ public class Player2controller : MonoBehaviour
 
     }
 
-    
+
 
     // ここからアビリティ一覧
 
     void HeroAbility()
     {
+        if (playerNumber == 1)
+        {
 
-        gameObject.layer = 13;
+            mp -= 10;
+            player2UIscript.ReadMp(mp);
+            gameObject.layer = 12;
 
+        }
     }
 
     void HeroAbility2()
     {
-
-        gameObject.layer = 10;
+        if (playerNumber == 2)
+        {
+            mp -= 10;
+            player2UIscript.ReadMp(mp);
+            gameObject.layer = 11;
+        }
 
     }
 }

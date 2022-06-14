@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class ToBattlestage : MonoBehaviour
 {
-    Player1Select player1;
-    Player2Select player2;
+    public Player1Select player1;
+    public Player2Select player2;
 
     public bool player1Ready;
     public bool player2Ready;
@@ -23,8 +23,7 @@ public class ToBattlestage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player1 = GameObject.Find("Player1").GetComponent<Player1Select>();
-        player2 = GameObject.Find("Player2").GetComponent<Player2Select>();
+       
         ready1And2.enabled = false;
         audioSource = GetComponent<AudioSource>();
     }
@@ -38,25 +37,16 @@ public class ToBattlestage : MonoBehaviour
             time = 0;
         }
 
-        ///緊急用バトルモード遷移ボタン
-        /*if (Input.GetButtonDown("Attack1"))
-        {
-            SceneManager.LoadScene("BattleMode");
-        }*/
-        ///
 
         if(go == true)
         {
             FadeManager.Instance.LoadScene("BattleMode", 1.0f);
         }
 
-
-    }
-
-    void FixedUpdate()
-    {
+        
         player1Ready = player1.ready;
         player2Ready = player2.ready;
+
         if (player1Ready == true && player2Ready == true)
         {
             BattleStart();
@@ -68,6 +58,10 @@ public class ToBattlestage : MonoBehaviour
             }
             
         }
+    }
+
+    void FixedUpdate()
+    {
         
     }
 

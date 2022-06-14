@@ -129,12 +129,13 @@ MonoBehaviour:
   hp: 200
   at: 35
   mp: 10
-  jumpForce: 250
+  jumpForce: 900
   jumpCount: 0
   force3: 1000
   attack1: {fileID: 8300000, guid: c279ca7e9ceb9b34eab0c09bf071e9ef, type: 3}
   jump: {fileID: 8300000, guid: fc16953abe25fec41912ff0eea9b05ac, type: 3}
   Ability1: {fileID: 8300000, guid: 03ae680d1d005604aa362eb1467a23a3, type: 3}
+  isPlaying: 1
 --- !u!61 &7534150398395360637
 BoxCollider2D:
   m_ObjectHideFlags: 0

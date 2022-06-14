@@ -42,6 +42,7 @@ public class BattleModeManager : MonoBehaviour
     public void Player1Die()
     {
         passedTime += Time.deltaTime * 1;
+        GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2controller>().isPlaying = false;
 
         if (passedTime > 3)
         {
@@ -63,6 +64,7 @@ public class BattleModeManager : MonoBehaviour
     public void Player2Die()
     {
         passedTime += Time.deltaTime * 1;
+        GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().isPlaying = false;
 
         if (passedTime > 3)
         {

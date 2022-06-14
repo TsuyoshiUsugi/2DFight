@@ -47,12 +47,13 @@ public class Player1UI : MonoBehaviour
     public void ReadHp(float damage)
     {
         
-        rtHp.sizeDelta = new Vector2(rtHp.sizeDelta.x - (damage * gageRateHp), rtHp.sizeDelta.y);
+         rtHp.sizeDelta = new Vector2(rtHp.sizeDelta.x - (damage * gageRateHp), rtHp.sizeDelta.y);
     }
 
     public void ReadMp(float mp)
     {
         
-        rtMp.sizeDelta = new Vector2(rtMp.sizeDelta.x - (mp * gageRateMp), rtMp.sizeDelta.y);
+         rtMp.sizeDelta = new Vector2((mp * gageRateMp), rtMp.sizeDelta.y);
+        
     }
 }

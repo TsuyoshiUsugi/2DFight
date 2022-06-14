@@ -20,6 +20,7 @@ public class Player1controller : MonoBehaviour
     public float mp = 10;
     public float jumpForce = 250f;
     public int jumpCount = 0;
+    public float playerNumber = 1;
 
     [Header("ノックバック")]
     public float force3 = 0;
@@ -29,13 +30,13 @@ public class Player1controller : MonoBehaviour
     public AudioClip jump;
     public AudioClip Ability1;
 
-
-
+    public bool isPlaying = true;
     private Player1UI player1UIscript;
     float passedTime = 0;
     // Start is called before the first frame update
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player1UIscript = GameObject.Find("Player1UI").GetComponent<Player1UI>();
@@ -45,18 +46,23 @@ public class Player1controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Attack();
+        if (isPlaying == true)
+        {
 
-        Jump();
+            Attack();
 
-        Ability();
+            Jump();
 
-        Die();
+            Ability();
+
+            Die();
+        }
     }
 
     void FixedUpdate()
     {
-        Move();
+        if (isPlaying == true)
+            Move();
 
     }
 
@@ -84,7 +90,7 @@ public class Player1controller : MonoBehaviour
             
         {
             animator.SetTrigger("isAttack");
-
+            //animator.SetBool("isAttack", false);
         }
     }
 
@@ -165,10 +171,9 @@ public class Player1controller : MonoBehaviour
         {
             if (mp > 0)
             {
-                
+
                 animator.SetTrigger("Ability");
-                mp--;
-                player1UIscript.ReadMp(1);
+                
                 audioSource.PlayOneShot(Ability1);
             }
         }
@@ -179,7 +184,7 @@ public class Player1controller : MonoBehaviour
 
         if (hp <= 0)
         {
-            animator.SetBool("Die", true);
+            animator.SetTrigger("Die");
             passedTime += Time.deltaTime;
 
             if (passedTime > 0.5f)
@@ -201,15 +206,25 @@ public class Player1controller : MonoBehaviour
 
     void HeroAbility()
     {
+        if (playerNumber == 1)
+        {
+           
+            mp -= 2;
+            player1UIscript.ReadMp(mp);
+            gameObject.layer = 12;
 
-        gameObject.layer = 12;
-
+        }
     }
     
     void HeroAbility2()
     {
-        
-        gameObject.layer = 11;
+        if (playerNumber == 2)
+        {
+            
+            mp -= 2;
+            player1UIscript.ReadMp(mp);
+            gameObject.layer = 11;
+        }
      
     }
 
