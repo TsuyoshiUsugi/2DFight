@@ -14,6 +14,7 @@ public class Player2Select : MonoBehaviour
     public Sprite sprite;
     public Sprite sprite1;
     public Sprite sprite2;
+    public Sprite sprite3;
 
     public bool ready = false;
     public AudioSource audioSource;
@@ -116,17 +117,24 @@ public class Player2Select : MonoBehaviour
         {
             case 0:
                 spriteRenderer.sprite = sprite;
+                transform.position = new Vector3(-5, -2.5f, 32.92f);
                 chara2 = 0;
                 break;
             case 1:
                 spriteRenderer.sprite = sprite1;
+                transform.position = new Vector3(-5, -2.5f, 32.92f);
                 chara2 = 1;
                 break;
             case 2:
                 spriteRenderer.sprite = sprite2;
+                transform.position = new Vector3(-5, -2.5f, 32.92f);
                 chara2 = 2;
                 break;
-
+            case 3:
+                spriteRenderer.sprite = sprite3;
+                transform.position = new Vector3(-4.8f, -0.35f, 32.92f);
+                chara2 = 3;
+                break;
 
         }
 

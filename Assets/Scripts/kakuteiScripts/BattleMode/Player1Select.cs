@@ -14,6 +14,7 @@ public class Player1Select : MonoBehaviour
     public Sprite sprite;
     public Sprite sprite1;
     public Sprite sprite2;
+    public Sprite sprite3;
 
     public bool ready = false;
 
@@ -82,7 +83,7 @@ public class Player1Select : MonoBehaviour
                 }
 
             }
-            else if (state == 2)
+            else if (state == 3)
             {
                 if (downButton < 0 && buttonTrigger == 0.0f)
                 {
@@ -117,15 +118,23 @@ public class Player1Select : MonoBehaviour
         {
             case 0:
                 spriteRenderer.sprite = sprite;
+                transform.position = new Vector3(-5, -2.5f, 32.92f);
                 chara = 0;
                 break;
             case 1:
                 spriteRenderer.sprite = sprite1;
+                transform.position = new Vector3(-5, -2.5f, 32.92f);
                 chara = 1;
                 break;
             case 2:
                 spriteRenderer.sprite = sprite2;
+                transform.position = new Vector3(-5, -2.5f, 32.92f);
                 chara = 2;
+                break;
+            case 3:
+                spriteRenderer.sprite = sprite3;
+                transform.position = new Vector3(-4.8f, -0.35f, 32.92f);
+                chara = 3;
                 break;
 
 
