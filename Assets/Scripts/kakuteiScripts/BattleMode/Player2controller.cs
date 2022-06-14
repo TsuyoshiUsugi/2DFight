@@ -6,6 +6,7 @@ public class Player2controller : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator animator;
+    AudioSource audioSource;
 
     //当たり判定を格納する変数を用意
     public Transform attackPoint;
@@ -23,6 +24,11 @@ public class Player2controller : MonoBehaviour
     [Header("ノックバック")]
     public float force3 = 0;
 
+    [Header("サウンド")]
+    public AudioClip attack1;
+    public AudioClip jump;
+    public AudioClip Ability1;
+
     private Player2UI player2UIscript;
     float passedTime = 0;
     // Start is called before the first frame update
@@ -31,6 +37,7 @@ public class Player2controller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player2UIscript = GameObject.Find("Player2UI").GetComponent<Player2UI>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,7 +49,7 @@ public class Player2controller : MonoBehaviour
 
         Ability();
 
-        DieBeta();
+        Die();
     }
 
     void FixedUpdate()
@@ -81,6 +88,7 @@ public class Player2controller : MonoBehaviour
     //当たり判定をonにする
     void AttackDamage()
     {
+        audioSource.PlayOneShot(attack1);
         Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player1Layer);
         foreach (Collider2D hitEnemy in hitEnemys)
         {
@@ -128,7 +136,7 @@ public class Player2controller : MonoBehaviour
         {
             rb.AddForce(transform.up * jumpForce);
             jumpCount++;
-            
+            audioSource.PlayOneShot(jump);
 
         }
     }
@@ -154,16 +162,18 @@ public class Player2controller : MonoBehaviour
                 animator.SetTrigger("Ability");
                 mp--;
                 player2UIscript.ReadMp(1);
+                audioSource.PlayOneShot(Ability1);
             }
         }
     }
 
-    void DieBeta()
+    void Die()
     {
         
 
         if (hp <= 0)
         {
+            animator.SetBool("Die", true);
             passedTime += Time.deltaTime;
 
             if (passedTime > 0.5f)
@@ -176,7 +186,7 @@ public class Player2controller : MonoBehaviour
                 Time.timeScale = 0.1f;
             }
 
-            
+
         }
 
     }

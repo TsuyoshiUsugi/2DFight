@@ -36,7 +36,7 @@ public class BattleModeManager : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(passedTime);
+        
     }
 
     public void Player1Die()
@@ -62,7 +62,7 @@ public class BattleModeManager : MonoBehaviour
 
     public void Player2Die()
     {
-        passedTime = 0;
+        passedTime += Time.deltaTime * 1;
 
         if (passedTime > 3)
         {

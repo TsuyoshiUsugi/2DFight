@@ -51,7 +51,7 @@ public class Player1controller : MonoBehaviour
 
         Ability();
 
-        DieBata();
+        Die();
     }
 
     void FixedUpdate()
@@ -84,7 +84,6 @@ public class Player1controller : MonoBehaviour
             
         {
             animator.SetTrigger("isAttack");
-            audioSource.PlayOneShot(attack1);
 
         }
     }
@@ -92,6 +91,7 @@ public class Player1controller : MonoBehaviour
     //“–‚½‚è”»’è‚ðon‚É‚·‚é
     void AttackDamage()
     {
+        audioSource.PlayOneShot(attack1);
         Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player2Layer);
         foreach (Collider2D hitEnemy in hitEnemys)
         {
@@ -174,7 +174,7 @@ public class Player1controller : MonoBehaviour
         }
     }
 
-    private void DieBata()
+    private void Die()
     {
 
         if (hp <= 0)

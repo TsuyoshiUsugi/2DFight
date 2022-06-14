@@ -7,7 +7,7 @@ public class Quit : MonoBehaviour
 {
     public void OncliclkStartButton()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
 
         Application.Quit();
     }

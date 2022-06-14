@@ -13,9 +13,12 @@ public class ToBattlestage : MonoBehaviour
     public bool player2Ready;
 
     public Text ready1And2;
-    public Text ready1And22;
+   
 
     float time = 0;
+    AudioSource audioSource;
+    public AudioClip sound1;
+    bool go = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +26,7 @@ public class ToBattlestage : MonoBehaviour
         player1 = GameObject.Find("Player1").GetComponent<Player1Select>();
         player2 = GameObject.Find("Player2").GetComponent<Player2Select>();
         ready1And2.enabled = false;
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,33 +37,52 @@ public class ToBattlestage : MonoBehaviour
         {
             time = 0;
         }
-        
 
+        ///緊急用バトルモード遷移ボタン
+        /*if (Input.GetButtonDown("Attack1"))
+        {
+            SceneManager.LoadScene("BattleMode");
+        }*/
+        ///
+
+        if(go == true)
+        {
+            FadeManager.Instance.LoadScene("BattleMode", 1.0f);
+        }
+
+
+    }
+
+    void FixedUpdate()
+    {
         player1Ready = player1.ready;
         player2Ready = player2.ready;
         if (player1Ready == true && player2Ready == true)
         {
             BattleStart();
+
+            if (audioSource.isPlaying == false)
+            {
+                audioSource.PlayOneShot(sound1);
+
+            }
+            
         }
         
     }
 
-    
+
 
     void BattleStart()
     {
+        
         SelectedText();
 
-        //Invoke("Scene", 3.0f);
         
-        FadeManager.Instance.LoadScene("BattleMode", 1f);
-
+        //FadeManager.Instance.LoadScene("BattleMode", 1.0f);
+        go = true;
     }
-    void Scene()
-    {
-
-        //SceneManager.LoadScene("BattleMode");
-    }
+   
 
     void SelectedText()
     {
@@ -80,17 +102,6 @@ public class ToBattlestage : MonoBehaviour
     }
 
 
-    void SelectedText2()
-    {
-        ready1And2.enabled = true;
-        ready1And22.enabled = false;
-    }
-
-    void SelectedText3()
-    {
-        ready1And2.enabled = false;
-        ready1And22.enabled = true;
-    }
-
+ 
 
 }
