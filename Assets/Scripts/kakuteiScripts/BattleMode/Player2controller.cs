@@ -233,4 +233,24 @@ public class Player2controller : MonoBehaviour
         }
 
     }
+
+    void SamuraiAbilityMove()
+    {
+        GameObject player2 = GameObject.FindGameObjectWithTag("Player1");
+
+        mp -= 5;
+        player2UIscript.ReadMp(mp);
+
+        if (player2.transform.position.x < -3.5f)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            this.transform.position = new Vector3(player2.transform.position.x + 1f, transform.position.y, player2.transform.position.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+            this.transform.position = new Vector3(player2.transform.position.x - 1f, transform.position.y, player2.transform.position.z);
+        }
+    }
+
 }

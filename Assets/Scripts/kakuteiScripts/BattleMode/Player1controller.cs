@@ -104,6 +104,7 @@ public class Player1controller : MonoBehaviour
     {
         audioSource.PlayOneShot(attack1);
         Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player2Layer);
+
         foreach (Collider2D hitEnemy in hitEnemys)
         {
             float x = transform.localScale.x;
@@ -232,5 +233,25 @@ public class Player1controller : MonoBehaviour
         }
      
     }
+
+    void SamuraiAbilityMove()
+    {
+        GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
+
+        mp -= 5;
+        player1UIscript.ReadMp(mp);
+
+        if (player2.transform.position.x < -3.5f)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+            this.transform.position = new Vector3(player2.transform.position.x + 1f, transform.position.y, player2.transform.position.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            this.transform.position = new Vector3(player2.transform.position.x - 1f, transform.position.y, player2.transform.position.z);
+        }
+    }
+
 
 }

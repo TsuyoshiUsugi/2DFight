@@ -206,6 +206,7 @@ MonoBehaviour:
   at: 20
   mp: 10
   jumpForce: 1100
+  playerNumber: 2
   force3: 1000
   attack1: {fileID: 8300000, guid: c279ca7e9ceb9b34eab0c09bf071e9ef, type: 3}
   jump: {fileID: 8300000, guid: fc16953abe25fec41912ff0eea9b05ac, type: 3}
