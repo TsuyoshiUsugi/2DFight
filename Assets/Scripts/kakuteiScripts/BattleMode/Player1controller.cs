@@ -36,6 +36,8 @@ public class Player1controller : MonoBehaviour
 
     [Header("アビリティ")]
     public GameObject spark;
+    public GameObject arrowPrefab;
+
 
     private const string clip_KEY = "Action";
     private enum actionNum
@@ -312,5 +314,10 @@ public class Player1controller : MonoBehaviour
         Instantiate(spark, new Vector3(player2.transform.position.x, player2.transform.position.y + 0.1f, 0), player2.transform.rotation);
     }
 
+    void Hunter()
+    {
+        Instantiate(arrowPrefab, attackPoint.position, attackPoint.rotation);
+        
+    }
 
 }

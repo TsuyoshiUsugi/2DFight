@@ -30,14 +30,31 @@ public class Player2controller : MonoBehaviour
     public AudioClip jump;
     public AudioClip Ability1;
 
+   
+    
+   
+
     [Header("アビリティ")]
     public GameObject spark;
-
+    public GameObject arrowPrefab;
 
     public bool isPlaying = true;
     
     private Player2UI player2UIscript;
     float passedTime = 0;
+
+    private const string clip_KEY = "Action";
+    private enum actionNum
+    {
+        Battle_WomanHeroIdle = 0,
+        run = 1,
+        jump = 2,
+        fall = 3,
+        sliding = 4,
+        wallAttach = 5,
+        wallJump = 6,
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -297,6 +314,12 @@ public class Player2controller : MonoBehaviour
             Instantiate(spark, new Vector3(player1.transform.position.x, player1.transform.position.y + 0.1f, 0), player1.transform.rotation);
            
         }
+    }
+
+    void Hunter()
+    {
+        Instantiate(arrowPrefab, attackPoint.position, attackPoint.rotation);
+
     }
 
 }
