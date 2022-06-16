@@ -203,7 +203,7 @@ public class Player1controller : MonoBehaviour
 
     void Ability()
     {
-        if (Input.GetButtonDown("Ability1"))
+        if (Input.GetButtonDown("Ability1") && mp > 0)
         {
             if (mp > 0)
             {
@@ -307,17 +307,21 @@ public class Player1controller : MonoBehaviour
 
     void WomanHero()
     {
-        GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
-        mp -= 5;
-        player1UIscript.ReadMp(mp);
+        if (mp >= 5)
+        {
+            GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
+            mp -= 5;
+            player1UIscript.ReadMp(mp);
 
-        Instantiate(spark, new Vector3(player2.transform.position.x, player2.transform.position.y + 0.1f, 0), player2.transform.rotation);
+            Instantiate(spark, new Vector3(player2.transform.position.x, player2.transform.position.y + 0.1f, 0), player2.transform.rotation);
+
+        }
     }
 
     void Hunter()
     {
         Instantiate(arrowPrefab, attackPoint.position, attackPoint.rotation);
-        
+        audioSource.PlayOneShot(attack1);
     }
 
 }

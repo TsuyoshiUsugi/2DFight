@@ -191,7 +191,7 @@ public class Player2controller : MonoBehaviour
 
     void Ability()
     {
-        if (Input.GetButtonDown("Ability2"))
+        if (Input.GetButtonDown("Ability2") && mp > 0)
         {
             if (mp > 0)
             {
@@ -305,7 +305,7 @@ public class Player2controller : MonoBehaviour
 
     void WomanHero2()
     {
-        if (mp > 0)
+        if (mp >= 5)
         {
             GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
             mp -= 5;
@@ -319,7 +319,7 @@ public class Player2controller : MonoBehaviour
     void Hunter()
     {
         Instantiate(arrowPrefab, attackPoint.position, attackPoint.rotation);
-
+        audioSource.PlayOneShot(attack1);
     }
 
 }
