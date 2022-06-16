@@ -210,26 +210,25 @@ public class Player2controller : MonoBehaviour
 
     // ここからアビリティ一覧
 
-    void HeroAbility()
+    void HeroAbility21()
     {
-        if (playerNumber == 1)
+        if (playerNumber == 2)
         {
-
+            
             mp -= 2;
-            player2UIscript.ReadMp(mp);
-            gameObject.layer = 12;
+            player2UIscript.ReadMp(2);
+            gameObject.layer = 13;
 
         }
     }
 
-    void HeroAbility2()
+    void HeroAbility22()
     {
         if (playerNumber == 2)
         {
 
-            mp -= 2;
-            player2UIscript.ReadMp(mp);
-            gameObject.layer = 11;
+           
+            gameObject.layer = 10;
         }
 
     }
@@ -239,7 +238,7 @@ public class Player2controller : MonoBehaviour
         GameObject player2 = GameObject.FindGameObjectWithTag("Player1");
 
         mp -= 5;
-        player2UIscript.ReadMp(mp);
+        player2UIscript.ReadMp(5);
 
         if (player2.transform.position.x < -3.5f)
         {
@@ -253,4 +252,33 @@ public class Player2controller : MonoBehaviour
         }
     }
 
+    void Monk()
+    {
+        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player1Layer);
+        mp -= 1;
+        player2UIscript.ReadMp(1);
+
+
+        foreach (Collider2D hitEnemy in hitEnemys)
+        {
+            float x = transform.localScale.x;
+
+
+            hitEnemy.GetComponent<Player1controller>().Ondamage(70);
+
+            if (x > 0)
+            {
+
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * 4000);
+
+            }
+            else if (x < 0)
+            {
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * -4000);
+
+            }
+
+        }
+        
+    }
 }

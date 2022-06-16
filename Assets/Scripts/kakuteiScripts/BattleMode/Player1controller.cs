@@ -182,6 +182,7 @@ public class Player1controller : MonoBehaviour
                 
                 audioSource.PlayOneShot(Ability1);
             }
+           
         }
     }
 
@@ -212,26 +213,18 @@ public class Player1controller : MonoBehaviour
 
     void HeroAbility()
     {
-        if (playerNumber == 1)
-        {
-           
+      
             mp -= 2;
             player1UIscript.ReadMp(mp);
             gameObject.layer = 12;
 
-        }
+        
     }
     
     void HeroAbility2()
     {
-        if (playerNumber == 2)
-        {
-            
-            mp -= 2;
-            player1UIscript.ReadMp(mp);
             gameObject.layer = 11;
-        }
-     
+        
     }
 
     void SamuraiAbilityMove()
@@ -250,6 +243,35 @@ public class Player1controller : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
             this.transform.position = new Vector3(player2.transform.position.x - 1f, transform.position.y, player2.transform.position.z);
+        }
+    }
+
+    void Monk()
+    {
+        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player2Layer);
+        mp -= 1;
+        player1UIscript.ReadMp(mp);
+
+
+        foreach (Collider2D hitEnemy in hitEnemys)
+        {
+            float x = transform.localScale.x;
+
+
+            hitEnemy.GetComponent<Player2controller>().Ondamage(70);
+
+            if (x > 0)
+            {
+
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * 4000);
+
+            }
+            else if (x < 0)
+            {
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * -4000);
+
+            }
+
         }
     }
 

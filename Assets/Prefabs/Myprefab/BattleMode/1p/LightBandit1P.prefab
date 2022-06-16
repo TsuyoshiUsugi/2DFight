@@ -131,6 +131,7 @@ MonoBehaviour:
   mp: 10
   jumpForce: 900
   jumpCount: 0
+  playerNumber: 1
   force3: 1000
   attack1: {fileID: 8300000, guid: c279ca7e9ceb9b34eab0c09bf071e9ef, type: 3}
   jump: {fileID: 8300000, guid: fc16953abe25fec41912ff0eea9b05ac, type: 3}
@@ -181,7 +182,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!82 &4691204825064932035
 AudioSource:
