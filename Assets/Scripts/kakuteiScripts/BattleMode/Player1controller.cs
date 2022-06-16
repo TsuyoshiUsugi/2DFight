@@ -34,7 +34,20 @@ public class Player1controller : MonoBehaviour
     private Player1UI player1UIscript;
     float passedTime = 0;
 
-   
+    [Header("アビリティ")]
+    public GameObject spark;
+
+    private const string clip_KEY = "Action";
+    private enum actionNum
+    {
+        Battle_WomanHeroIdle = 0,
+        run = 1,
+        jump = 2,
+        fall = 3,
+        sliding = 4,
+        wallAttach = 5,
+        wallJump = 6,
+    }
 
 
 
@@ -164,8 +177,8 @@ public class Player1controller : MonoBehaviour
             rb.AddForce(transform.up * jumpForce);
             jumpCount++;
             audioSource.PlayOneShot(jump);
-           
             
+            animator.CrossFadeInFixedTime("jump", 0);
         }
     }
 
@@ -174,7 +187,8 @@ public class Player1controller : MonoBehaviour
         if (other.gameObject.CompareTag("Floor") || gameObject.transform.position.y <= -3)
         {
             jumpCount = 0;
-
+            if(hp > 0)
+            animator.CrossFadeInFixedTime("Battle_WomanHeroIdle", 0);
 
         }
 
@@ -287,7 +301,11 @@ public class Player1controller : MonoBehaviour
 
     void WomanHero()
     {
+        GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
+        mp -= 5;
+        player1UIscript.ReadMp(mp);
 
+        Instantiate(spark, new Vector3(player2.transform.position.x, -2.17f, 0), player2.transform.rotation);
     }
 
 
