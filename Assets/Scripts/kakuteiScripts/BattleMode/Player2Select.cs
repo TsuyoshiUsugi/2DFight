@@ -16,6 +16,7 @@ public class Player2Select : MonoBehaviour
     public Sprite sprite2;
     public Sprite sprite3;
     public Sprite sprite4;
+    public Sprite sprite5;
 
     public bool ready = false;
     public AudioSource audioSource;
@@ -83,7 +84,7 @@ public class Player2Select : MonoBehaviour
                 }
 
             }
-            else if (state == 4)
+            else if (state == 5)
             {
                 if (downButton < 0 && buttonTrigger == 0.0f)
                 {
@@ -141,7 +142,11 @@ public class Player2Select : MonoBehaviour
                 transform.position = new Vector3(5.22f, -0.35f, 32.92f);
                 chara2 = 4;
                 break;
-
+            case 5:
+                spriteRenderer.sprite = sprite5;
+                transform.position = new Vector3(4.46f, -0.02f, 32.92f);
+                chara2 = 5;
+                break;
         }
 
     }

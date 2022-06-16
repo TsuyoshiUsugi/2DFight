@@ -10,6 +10,7 @@ public class Player1Spawn : MonoBehaviour
     public GameObject prefab2;
     public GameObject prefab3;
     public GameObject prefab4;
+    public GameObject prefab5;
 
     public int _charaNumber = 0;
 
@@ -44,6 +45,9 @@ public class Player1Spawn : MonoBehaviour
                 break;
             case 4:
                 Instantiate(prefab4);
+                break;
+            case 5:
+                Instantiate(prefab5);
                 break;
         }
 

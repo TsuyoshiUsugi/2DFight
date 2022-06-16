@@ -16,6 +16,7 @@ public class Player1Select : MonoBehaviour
     public Sprite sprite2;
     public Sprite sprite3;
     public Sprite sprite4;
+    public Sprite sprite5;
 
     public bool ready = false;
 
@@ -84,7 +85,7 @@ public class Player1Select : MonoBehaviour
                 }
 
             }
-            else if (state == 4)
+            else if (state == 5)
             {
                 if (downButton < 0 && buttonTrigger == 0.0f)
                 {
@@ -141,6 +142,11 @@ public class Player1Select : MonoBehaviour
                 spriteRenderer.sprite = sprite4;
                 transform.position = new Vector3(-4.8f, -0.35f, 32.92f);
                 chara = 4;
+                break;
+            case 5:
+                spriteRenderer.sprite = sprite5;
+                transform.position = new Vector3(-5.59f, -0.02f, 32.92f);
+                chara = 5;
                 break;
 
         }

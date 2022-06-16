@@ -91,18 +91,22 @@ public class Player1controller : MonoBehaviour
 
     void Move()
     {
-        float x = Input.GetAxisRaw("Horizontal1");
+        if (hp > 0)
+        {
+            
+            float x = Input.GetAxisRaw("Horizontal1");
         
-        if (x > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
+            if (x > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (x < 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            animator.SetFloat("Speed", Mathf.Abs(x));
+            rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
         }
-        else if (x < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        animator.SetFloat("Speed", Mathf.Abs(x));
-        rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
 
     }
 

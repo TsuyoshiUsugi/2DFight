@@ -1726,11 +1726,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95803ceb4dc0d9f4a9d0d040596d2787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab0: {fileID: 4758684229833541950, guid: 8c0f2acc1b415e64591b3c99b6db88e7, type: 3}
+  prefab0: {fileID: 6173377760284382941, guid: dc35e40b4ea71ed40969d3ce5e55604d, type: 3}
   prefab1: {fileID: 5872742089840475151, guid: ca4b81b217e3d0547a2cc205c4f6e902, type: 3}
   prefab2: {fileID: 2954943115203549147, guid: 50c336c01c4756343b03df46f2f6ec73, type: 3}
   prefab3: {fileID: 1853052078234691331, guid: bb679cb31ed66bb4783a1d3aec517d4a, type: 3}
   prefab4: {fileID: 5984904560451702572, guid: c8e6c2f594ca8a24cba597e13324611b, type: 3}
+  prefab5: {fileID: 4758684229833541950, guid: 8c0f2acc1b415e64591b3c99b6db88e7, type: 3}
   _charaNumber2: 3
 --- !u!4 &923458225
 Transform:
@@ -2028,11 +2029,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 882e050507084644eb1019b7aa7b9512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab0: {fileID: 5602964007291741367, guid: da0d145a50ad5d54496edc74b28a030d, type: 3}
+  prefab0: {fileID: 2581631726067740126, guid: 9634b079e977ccc4b8990c1117f0eb27, type: 3}
   prefab1: {fileID: 7534150398395360631, guid: 1d99c377fc024344b941a3cca038ef8a, type: 3}
   prefab2: {fileID: 2239832422659571093, guid: 8ca125551a2ddb54ca31f711c012207c, type: 3}
   prefab3: {fileID: 5869198932613559764, guid: ee784c93b953d5348ad5c44f24079bb1, type: 3}
   prefab4: {fileID: 9110789547552918760, guid: 0a6642a3900a3714fba1e95cfa177393, type: 3}
+  prefab5: {fileID: 5602964007291741367, guid: da0d145a50ad5d54496edc74b28a030d, type: 3}
   _charaNumber: 3
 --- !u!1 &1107052568
 GameObject:

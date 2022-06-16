@@ -69,28 +69,28 @@ public class Player2controller : MonoBehaviour
     {
         if(isPlaying == true)
         Move();
-        else
-        {
-            animator.SetFloat("Speed", 0);
-        }
+      
 
     }
 
     void Move()
     {
-        
-        float x = Input.GetAxisRaw("Horizontal2");
+        if (hp > 0)
+        {
+            float x = Input.GetAxisRaw("Horizontal2");
 
-        if (x > 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
+            if (x > 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if (x < 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            animator.SetFloat("Speed", Mathf.Abs(x));
+            rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
+
         }
-        else if (x < 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        animator.SetFloat("Speed", Mathf.Abs(x));
-        rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
         
 
     }
@@ -288,11 +288,15 @@ public class Player2controller : MonoBehaviour
 
     void WomanHero2()
     {
-        GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
-        mp -= 5;
-        player2UIscript.ReadMp(mp);
+        if (mp > 0)
+        {
+            GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+            mp -= 5;
+            player2UIscript.ReadMp(5);
 
-        Instantiate(spark, new Vector3(player1.transform.position.x, player1.transform.position.y + 0.1f, 0), player1.transform.rotation);
+            Instantiate(spark, new Vector3(player1.transform.position.x, player1.transform.position.y + 0.1f, 0), player1.transform.rotation);
+           
+        }
     }
 
 }
