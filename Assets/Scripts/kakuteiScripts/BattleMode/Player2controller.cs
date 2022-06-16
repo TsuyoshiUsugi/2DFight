@@ -30,6 +30,10 @@ public class Player2controller : MonoBehaviour
     public AudioClip jump;
     public AudioClip Ability1;
 
+    [Header("アビリティ")]
+    public GameObject spark;
+
+
     public bool isPlaying = true;
     
     private Player2UI player2UIscript;
@@ -153,7 +157,7 @@ public class Player2controller : MonoBehaviour
             rb.AddForce(transform.up * jumpForce);
             jumpCount++;
             audioSource.PlayOneShot(jump);
-
+            animator.CrossFadeInFixedTime("jump", 0);
         }
     }
 
@@ -162,7 +166,7 @@ public class Player2controller : MonoBehaviour
         if (other.gameObject.CompareTag("Floor") || gameObject.transform.position.y <= -3)
         {
             jumpCount = 0;
-            
+            animator.CrossFadeInFixedTime("Battle_WomanHeroIdle", 0);
         }
 
 
@@ -281,4 +285,14 @@ public class Player2controller : MonoBehaviour
         }
         
     }
+
+    void WomanHero2()
+    {
+        GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+        mp -= 5;
+        player2UIscript.ReadMp(mp);
+
+        Instantiate(spark, new Vector3(player1.transform.position.x, player1.transform.position.y + 0.1f, 0), player1.transform.rotation);
+    }
+
 }

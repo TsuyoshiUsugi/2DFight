@@ -305,7 +305,7 @@ public class Player1controller : MonoBehaviour
         mp -= 5;
         player1UIscript.ReadMp(mp);
 
-        Instantiate(spark, new Vector3(player2.transform.position.x, -2.17f, 0), player2.transform.rotation);
+        Instantiate(spark, new Vector3(player2.transform.position.x, player2.transform.position.y + 0.1f, 0), player2.transform.rotation);
     }
 
 

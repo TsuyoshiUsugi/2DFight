@@ -277,6 +277,7 @@ MonoBehaviour:
   attack1: {fileID: 8300000, guid: c279ca7e9ceb9b34eab0c09bf071e9ef, type: 3}
   jump: {fileID: 8300000, guid: fc16953abe25fec41912ff0eea9b05ac, type: 3}
   Ability1: {fileID: 8300000, guid: 03ae680d1d005604aa362eb1467a23a3, type: 3}
+  spark: {fileID: 4047206613648253785, guid: 776ad80ccb151664e97572b01bd83e68, type: 3}
   isPlaying: 1
 --- !u!1 &5984904560757608134
 GameObject:
