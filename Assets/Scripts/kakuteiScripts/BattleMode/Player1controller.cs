@@ -33,6 +33,11 @@ public class Player1controller : MonoBehaviour
     public bool isPlaying = true;
     private Player1UI player1UIscript;
     float passedTime = 0;
+
+   
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -150,6 +155,8 @@ public class Player1controller : MonoBehaviour
         }
     }
 
+    
+
     void Jump()
     {
         if (Input.GetButtonDown("Vertical1") && hp != 0 && jumpCount == 0)
@@ -157,7 +164,8 @@ public class Player1controller : MonoBehaviour
             rb.AddForce(transform.up * jumpForce);
             jumpCount++;
             audioSource.PlayOneShot(jump);
-
+           
+            
         }
     }
 
@@ -166,6 +174,8 @@ public class Player1controller : MonoBehaviour
         if (other.gameObject.CompareTag("Floor") || gameObject.transform.position.y <= -3)
         {
             jumpCount = 0;
+
+
         }
 
 
@@ -273,6 +283,11 @@ public class Player1controller : MonoBehaviour
             }
 
         }
+    }
+
+    void WomanHero()
+    {
+
     }
 
 
