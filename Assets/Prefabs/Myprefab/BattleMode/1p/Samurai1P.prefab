@@ -176,7 +176,7 @@ MonoBehaviour:
   hp: 100
   at: 80
   mp: 10
-  jumpForce: 100
+  jumpForce: 250
   jumpCount: 0
   playerNumber: 1
   force3: -3000

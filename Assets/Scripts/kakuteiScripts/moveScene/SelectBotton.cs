@@ -97,7 +97,7 @@ public class SelectBotton : MonoBehaviour
         if (state == 0 && Input.GetButtonDown("Attack1")) 
         {
             audioSource.PlayOneShot(sound2);
-            FadeManager.Instance.LoadScene("openingTo1", 1.0f);
+            FadeManager.Instance.LoadScene("Tutorial", 1.0f);
         }
         else if (state == 1 && Input.GetButtonDown("Attack1"))
         {

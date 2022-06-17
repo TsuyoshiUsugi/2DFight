@@ -77,7 +77,7 @@ public class Player1controller : MonoBehaviour
 
             Die();
         }
-        else
+        else if (isPlaying == false)
         {
             animator.SetFloat("Speed", 0);
         }

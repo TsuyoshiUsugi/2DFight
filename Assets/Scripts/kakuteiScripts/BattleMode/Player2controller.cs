@@ -80,6 +80,11 @@ public class Player2controller : MonoBehaviour
 
             Die();
         }
+        else if (isPlaying == false)
+        {
+            animator.SetFloat("Speed", 0);
+        }
+
     }
 
     void FixedUpdate()

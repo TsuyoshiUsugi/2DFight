@@ -272,7 +272,7 @@ MonoBehaviour:
   hp: 100
   at: 80
   mp: 10
-  jumpForce: 100
+  jumpForce: 250
   playerNumber: 2
   force3: -3000
   attack1: {fileID: 8300000, guid: c279ca7e9ceb9b34eab0c09bf071e9ef, type: 3}
