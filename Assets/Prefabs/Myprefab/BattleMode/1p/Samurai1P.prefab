@@ -173,8 +173,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   moveSpeed: 3
-  hp: 100
-  at: 80
+  hp: 200
+  at: 60
   mp: 10
   jumpForce: 250
   jumpCount: 0

@@ -203,7 +203,7 @@ public class Player2controller : MonoBehaviour
 
                 animator.SetTrigger("Ability");
                
-                audioSource.PlayOneShot(Ability1);
+                
             }
         }
     }
@@ -244,7 +244,7 @@ public class Player2controller : MonoBehaviour
             mp -= 2;
             player2UIscript.ReadMp(2);
             gameObject.layer = 13;
-
+            audioSource.PlayOneShot(Ability1);
         }
     }
 
@@ -262,9 +262,9 @@ public class Player2controller : MonoBehaviour
     void SamuraiAbilityMove()
     {
         GameObject player2 = GameObject.FindGameObjectWithTag("Player1");
-
-        mp -= 5;
-        player2UIscript.ReadMp(5);
+        audioSource.PlayOneShot(Ability1);
+        mp -= 2;
+        player2UIscript.ReadMp(2);
 
         if (player2.transform.position.x < -3.5f)
         {
@@ -283,7 +283,7 @@ public class Player2controller : MonoBehaviour
         Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player1Layer);
         mp -= 1;
         player2UIscript.ReadMp(1);
-
+        audioSource.PlayOneShot(Ability1);
 
         foreach (Collider2D hitEnemy in hitEnemys)
         {
@@ -317,7 +317,7 @@ public class Player2controller : MonoBehaviour
             player2UIscript.ReadMp(5);
 
             Instantiate(spark, new Vector3(player1.transform.position.x, player1.transform.position.y + 0.1f, 0), player1.transform.rotation);
-           
+            audioSource.PlayOneShot(Ability1);
         }
     }
 

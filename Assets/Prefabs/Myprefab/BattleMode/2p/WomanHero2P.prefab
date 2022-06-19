@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1958644960286616578}
   m_Layer: 10
   m_Name: GameObject
-  m_TagString: Player2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   moveSpeed: 3
-  hp: 300
+  hp: 250
   at: 40
   mp: 10
   jumpForce: 250

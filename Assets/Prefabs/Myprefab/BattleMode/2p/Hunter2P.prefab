@@ -373,10 +373,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   moveSpeed: 5
-  hp: 100
+  hp: 180
   at: 10
   mp: 10
-  jumpForce: 500
+  jumpForce: 350
   playerNumber: 2
   force3: 0
   attack1: {fileID: 8300000, guid: c279ca7e9ceb9b34eab0c09bf071e9ef, type: 3}

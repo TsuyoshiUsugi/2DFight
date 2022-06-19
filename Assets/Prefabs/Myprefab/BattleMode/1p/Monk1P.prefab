@@ -367,7 +367,7 @@ MonoBehaviour:
     m_Bits: 1024
   moveSpeed: 3
   hp: 200
-  at: 10
+  at: 20
   mp: 10
   jumpForce: 250
   jumpCount: 0
