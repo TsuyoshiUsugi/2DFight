@@ -32,6 +32,7 @@ public class Player2Select : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        chara2 = 0;
         spriteRenderer.sprite = sprite;
 
         ready2.enabled = false;

@@ -35,6 +35,7 @@ public class Player1Select : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        chara = 0;
         spriteRenderer.sprite = sprite;
         ready1.enabled = false;
         audioSource = GetComponent<AudioSource>();

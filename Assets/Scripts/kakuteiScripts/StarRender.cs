@@ -36,6 +36,16 @@ public class StarRender : MonoBehaviour
     public GameObject p2Star3;
 
     // Start is called before the first frame update
+    /*private void Awake()
+    {
+        star1.SetActive(false);
+        star2.SetActive(false);
+        star3.SetActive(false);
+        p2Star1.SetActive(false);
+        p2Star2.SetActive(false);
+        p2Star3.SetActive(false);
+    }*/
+
     void Start()
     {
         p1SelectScript1 = p1Select.GetComponent<Player1Select>();
