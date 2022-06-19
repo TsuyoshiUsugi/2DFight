@@ -46,7 +46,7 @@ public class SelectButton2 : MonoBehaviour
             restartText.enabled = true;
             charaSelect.enabled = true;
             quitText.enabled = true;
-        
+            Time.timeScale = 1f;
         }
 
         if (state == 0 && downButton < 0 && buttonTrigger == 0.0f && isPlaying == false)
