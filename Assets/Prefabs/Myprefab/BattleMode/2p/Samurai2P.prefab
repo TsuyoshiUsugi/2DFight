@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 1853052079842887449}
-  attackRadius: 0.24
+  attackRadius: 0.71
   player1Layer:
     serializedVersion: 2
     m_Bits: 2048

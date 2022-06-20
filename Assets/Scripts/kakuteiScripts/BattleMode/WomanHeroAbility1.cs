@@ -23,15 +23,12 @@ public class WomanHeroAbility1 : MonoBehaviour
         audioSource.PlayOneShot(sound1);
         foreach (Collider2D hitEnemy in hitEnemys)
         {
-            Debug.Log(hitEnemy);
+           
 
 
             hitEnemy.GetComponent<Player1controller>().Ondamage(90);
 
             hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.up * 1000);
-
-       
-
         }
     }
 

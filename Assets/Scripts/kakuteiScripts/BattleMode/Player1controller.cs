@@ -29,6 +29,7 @@ public class Player1controller : MonoBehaviour
     public AudioClip attack1;
     public AudioClip jump;
     public AudioClip Ability1;
+    public AudioClip sound4;
 
     public bool isPlaying = true;
     private Player1UI player1UIscript;
@@ -222,6 +223,7 @@ public class Player1controller : MonoBehaviour
         if (hp <= 0)
         {
             animator.SetTrigger("Die");
+            //audioSource.PlayOneShot(sound4);
             passedTime += Time.deltaTime;
 
             if (passedTime > 0.5f)

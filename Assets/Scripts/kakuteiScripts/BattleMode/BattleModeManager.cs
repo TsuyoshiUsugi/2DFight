@@ -21,6 +21,9 @@ public class BattleModeManager : MonoBehaviour
     public bool isPlaying = false;
 
     float passedTime;
+
+    public AudioSource audioSource;
+    public AudioClip sound1;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -29,7 +32,7 @@ public class BattleModeManager : MonoBehaviour
 
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class BattleModeManager : MonoBehaviour
 
     public void Player1Die()
     {
+
         passedTime += Time.deltaTime * 1;
         GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2controller>().isPlaying = false;
 
@@ -49,6 +53,7 @@ public class BattleModeManager : MonoBehaviour
             if (isPlaying == true)
             {
                 playerWinText.text = "PLAYER2 WIN!";
+                audioSource.PlayOneShot(sound1);
                 isPlaying = false;
             }
 
@@ -71,6 +76,7 @@ public class BattleModeManager : MonoBehaviour
             if (isPlaying == true)
             {
                 playerWinText.text = "PLAYER1 WIN!";
+                audioSource.PlayOneShot(sound1);
                 isPlaying = false;
             }
 
