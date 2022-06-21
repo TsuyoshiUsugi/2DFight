@@ -12,28 +12,28 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorials/Tutorial.unity
     guid: 7325c3fda33dda740bb123d20f7b214a
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
+    path: Assets/Scenes/Test/GameOver.unity
     guid: 349f5691ea8ac3f449c479315f9db5a6
   - enabled: 1
-    path: Assets/Scenes/openingTo1.unity
+    path: Assets/Scenes/Test/openingTo1.unity
     guid: 26093e7bd7c56004b91a87e10e500156
   - enabled: 1
-    path: Assets/Scenes/Stage1.unity
+    path: Assets/Scenes/Test/Stage1.unity
     guid: c6ca1f42f58c5d640875869fb2fa4a61
   - enabled: 1
-    path: Assets/Scenes/Stage1to2.unity
+    path: Assets/Scenes/Test/Stage1to2.unity
     guid: 77906c8bdf4856b4aa9d97be74669a9c
   - enabled: 1
-    path: Assets/Scenes/stage2.unity
+    path: Assets/Scenes/Test/stage2.unity
     guid: 4314796e7a5c3934888fc1af26d44234
   - enabled: 1
-    path: Assets/Scenes/Stage2to3.unity
+    path: Assets/Scenes/Test/Stage2to3.unity
     guid: 62dbcb7e63eb27a468883f02edbd0a90
   - enabled: 1
-    path: Assets/Scenes/Stage3.unity
+    path: Assets/Scenes/Test/Stage3.unity
     guid: 57980f32c246699458ac7539a8676482
   - enabled: 1
-    path: Assets/Scenes/Stage3to4.unity
+    path: Assets/Scenes/Test/Stage3to4.unity
     guid: 80b49bde5101b294994dbc6f52d4d674
   - enabled: 1
     path: Assets/Scenes/CharacterSelect.unity

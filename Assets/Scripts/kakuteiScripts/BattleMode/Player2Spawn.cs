@@ -13,12 +13,12 @@ public class Player2Spawn : MonoBehaviour
     public GameObject prefab5;
     public GameObject prefab6;
 
-    public int _charaNumber2 = 0;
+    public int charaNumber2 = 0;
 
     // Start is called before the first frame update
     void Awake()
     {
-        _charaNumber2 = Player2Select.chara2;
+        charaNumber2 = Player2Select.chara2;
         Player2();
     }
 
@@ -30,7 +30,7 @@ public class Player2Spawn : MonoBehaviour
 
     void Player2()
     {
-        switch (_charaNumber2)
+        switch (charaNumber2)
         {
             case 0:
                 Instantiate(prefab0);

@@ -6,14 +6,14 @@ using TMPro;
 public class BattleModeManager : MonoBehaviour
 {
     //player1の情報を読み取る変数
-    private GameObject _player1Object;
-    private float _player1Hp;
+    private GameObject player1Object;
+    private float player1Hp;
 
     //player2の情報を読み取る変数
-    private float _player2Hp;      
+    private float player2Hp;      
 
     //timeの情報を読み取る変数
-    private int _time;
+    private int time;
 
     //勝利テキスト表示
     public TextMeshProUGUI playerWinText;
@@ -94,19 +94,19 @@ public class BattleModeManager : MonoBehaviour
     {
         if (isPlaying == true)
         {
-            _player1Hp = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().hp;
-            _player2Hp = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2controller>().hp;
+            player1Hp = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().hp;
+            player2Hp = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2controller>().hp;
             GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().isPlaying = false;
             GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2controller>().isPlaying = false;
         }
 
-        if (_player1Hp > _player2Hp && isPlaying == true)
+        if (player1Hp > player2Hp && isPlaying == true)
         {
             playerWinText.text = "PLAYER1 WIN!";
             isPlaying = false;
             GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
         }
-        else if (_player1Hp < _player2Hp && isPlaying == true)
+        else if (player1Hp < player2Hp && isPlaying == true)
         {
             playerWinText.text = "PLAYER2 WIN!";
             isPlaying = false;
