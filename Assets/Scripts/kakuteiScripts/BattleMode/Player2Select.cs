@@ -46,6 +46,7 @@ public class Player2Select : MonoBehaviour
     {
         SelectButton();
 
+        
         ReadyButton();
     }
 
