@@ -15,15 +15,6 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        canvas1.SetActive(true);
-        canvas2.SetActive(false);
-        canvas3.SetActive(false);
-        canvas4.SetActive(false);
-        canvas5.SetActive(false);
-        canvas6.SetActive(false);
-        canvas7.SetActive(false);
-        */
 
         foreach (var canvas in canvasList)
         {
@@ -53,7 +44,7 @@ public class TutorialManager : MonoBehaviour
             }
 
         }
-        else if (state == 6)
+        else if (state == 8)
         {
             if (downButton < 0 && buttonTrigger == 0.0f)
             {
@@ -112,6 +103,12 @@ public class TutorialManager : MonoBehaviour
                 canvasList[6].SetActive(true);
                 break;
             case 7:
+                canvasList[7].SetActive(true);
+                break;
+            case 8:
+                canvasList[7].SetActive(true);
+                break;
+            case 9:
                 canvasList[7].SetActive(true);
                 break;
         }

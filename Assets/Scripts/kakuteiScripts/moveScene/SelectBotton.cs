@@ -156,7 +156,7 @@ public class SelectBotton : MonoBehaviour
                 arcadeText.DOColor(Color.white, 0f);
                 state = 0;
                 audioSource.PlayOneShot(sound1);
-                Debug.Log("okkk");
+                
             }
 
         }

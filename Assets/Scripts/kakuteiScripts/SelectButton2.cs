@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class SelectButton2 : MonoBehaviour
 {
@@ -13,11 +11,17 @@ public class SelectButton2 : MonoBehaviour
     public Text quitText;
 
     public float state = 0;
+
     float buttonTrigger;
+    float buttonTriggerPC;
+
     public bool isPlaying = true;
+
     AudioSource audioSource;
     public AudioClip sound1;
     public AudioClip sound2;
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +38,8 @@ public class SelectButton2 : MonoBehaviour
         Button();
 
         Decide();
+
+        ButtonForPC();
     }
 
     private void Button()
@@ -111,5 +117,51 @@ public class SelectButton2 : MonoBehaviour
                 audioSource.PlayOneShot(sound2);
             }
         }
+    }
+
+    void ButtonForPC()
+    {
+        float downButtonPC = Input.GetAxisRaw("PCMenu1");
+
+        if (state == 0 && Input.GetAxisRaw("PCMenu1") == -1 && buttonTriggerPC == 0)
+        {
+            restartText.DOColor(new Color(0f, 0f, 0f, 0.46f), 0f);
+            charaSelect.DOColor(Color.white, 0f);
+            state = 1;
+            audioSource.PlayOneShot(sound1);
+        }
+        else if (state == 1)
+        {
+
+
+            if (Input.GetAxisRaw("PCMenu1") == -1 && buttonTriggerPC == 0)
+            {
+                charaSelect.DOColor(new Color(0f, 0f, 0f, 0.46f), 0f);
+                quitText.DOColor(Color.white, 0f);
+                state = 2;
+                audioSource.PlayOneShot(sound1);
+
+            }
+            else if (Input.GetAxisRaw("PCMenu1") == 1 && buttonTriggerPC == 0)
+            {
+
+                charaSelect.DOColor(new Color(0f, 0f, 0f, 0.46f), 0f);
+                restartText.DOColor(Color.white, 0f);
+                state = 0;
+                audioSource.PlayOneShot(sound1);
+
+            }
+
+        }
+        else if (state == 2 && Input.GetAxisRaw("PCMenu1") == 1 && buttonTriggerPC == 0)
+        {
+            quitText.DOColor(new Color(0f, 0f, 0f, 0.46f), 0f);
+            charaSelect.DOColor(Color.white, 0f);
+            state = 1;
+            audioSource.PlayOneShot(sound1);
+        }
+
+        buttonTriggerPC = downButtonPC;
+
     }
 }
