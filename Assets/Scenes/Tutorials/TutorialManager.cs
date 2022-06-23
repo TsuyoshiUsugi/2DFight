@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
-    public GameObject canvas1;
-    public GameObject canvas2;
-    public GameObject canvas3;
-    public GameObject canvas4;
-    public GameObject canvas5;
-    public GameObject canvas6;
-    public GameObject canvas7;
+    public List<GameObject> canvasList = new List<GameObject>();
     //public GameObject canvas7;
 
     public AudioSource audioSource;
@@ -21,6 +15,7 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         canvas1.SetActive(true);
         canvas2.SetActive(false);
         canvas3.SetActive(false);
@@ -28,6 +23,14 @@ public class TutorialManager : MonoBehaviour
         canvas5.SetActive(false);
         canvas6.SetActive(false);
         canvas7.SetActive(false);
+        */
+
+        foreach (var canvas in canvasList)
+        {
+            canvas.SetActive(false);
+        }
+
+        canvasList[0].SetActive(true);
     }
 
     // Update is called once per frame
@@ -80,71 +83,37 @@ public class TutorialManager : MonoBehaviour
 
     public void ImageState()
     {
+        foreach (var canvas in canvasList)
+        {
+            canvas.SetActive(false);
+        }
+
         switch (state)
         {
             case 0:
-                canvas1.SetActive(true);
-                canvas2.SetActive(false);
-                canvas3.SetActive(false);
-                canvas4.SetActive(false);
-                canvas5.SetActive(false);
-                canvas6.SetActive(false);
-                canvas7.SetActive(false);
+                canvasList[0].SetActive(true);
                 break;
             case 1:
-                canvas1.SetActive(false);
-                canvas2.SetActive(true);
-                canvas3.SetActive(false);
-                canvas4.SetActive(false);
-                canvas5.SetActive(false);
-                canvas6.SetActive(false);
-                canvas7.SetActive(false);
+                canvasList[1].SetActive(true);
                 break;
             case 2:
-                canvas1.SetActive(false);
-                canvas2.SetActive(false);
-                canvas3.SetActive(true);
-                canvas4.SetActive(false);
-                canvas5.SetActive(false);
-                canvas6.SetActive(false);
+                canvasList[2].SetActive(true);
                 break;
             case 3:
-                canvas1.SetActive(false);
-                canvas2.SetActive(false);
-                canvas3.SetActive(false);
-                canvas4.SetActive(true);
-                canvas5.SetActive(false);
-                canvas6.SetActive(false);
-                canvas7.SetActive(false);
+                canvasList[3].SetActive(true);
                 break;
             case 4:
-                canvas1.SetActive(false);
-                canvas2.SetActive(false);
-                canvas3.SetActive(false);
-                canvas4.SetActive(false);
-                canvas5.SetActive(true);
-                canvas6.SetActive(false);
-                canvas7.SetActive(false);
+                canvasList[4].SetActive(true);
                 break;
             case 5:
-                canvas1.SetActive(false);
-                canvas2.SetActive(false);
-                canvas3.SetActive(false);
-                canvas4.SetActive(false);
-                canvas5.SetActive(false);
-                canvas6.SetActive(true);
-                canvas7.SetActive(false);
+                canvasList[5].SetActive(true);
                 break;
             case 6:
-                canvas1.SetActive(false);
-                canvas2.SetActive(false);
-                canvas3.SetActive(false);
-                canvas4.SetActive(false);
-                canvas5.SetActive(false);
-                canvas6.SetActive(false);
-                canvas7.SetActive(true);
+                canvasList[6].SetActive(true);
                 break;
-
+            case 7:
+                canvasList[7].SetActive(true);
+                break;
         }
 
     }

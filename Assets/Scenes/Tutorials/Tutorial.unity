@@ -1271,7 +1271,7 @@ GameObject:
   - component: {fileID: 220428821}
   - component: {fileID: 220428820}
   m_Layer: 5
-  m_Name: Canvas2
+  m_Name: Canvas4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2033,7 +2033,7 @@ GameObject:
   - component: {fileID: 372788624}
   - component: {fileID: 372788623}
   m_Layer: 5
-  m_Name: Canvas6
+  m_Name: Canvas8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2362,7 +2362,7 @@ GameObject:
   - component: {fileID: 427240261}
   - component: {fileID: 427240260}
   m_Layer: 5
-  m_Name: "Canvas\uFF17"
+  m_Name: Canvas9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2896,7 +2896,7 @@ GameObject:
   - component: {fileID: 500795473}
   - component: {fileID: 500795472}
   m_Layer: 5
-  m_Name: Canvas3
+  m_Name: Canvas5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3153,7 +3153,7 @@ GameObject:
   - component: {fileID: 544706925}
   - component: {fileID: 544706924}
   m_Layer: 5
-  m_Name: Canvas1 (1)
+  m_Name: Canvas2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4588,7 +4588,7 @@ GameObject:
   - component: {fileID: 952061640}
   - component: {fileID: 952061639}
   m_Layer: 5
-  m_Name: Canvas1 (2)
+  m_Name: Canvas3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4959,7 +4959,7 @@ GameObject:
   - component: {fileID: 1068172594}
   - component: {fileID: 1068172593}
   m_Layer: 5
-  m_Name: Canvas4
+  m_Name: Canvas6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8637,13 +8637,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146f1a107748a544185f2a8b3f659500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas1: {fileID: 55998368}
-  canvas2: {fileID: 220428819}
-  canvas3: {fileID: 500795471}
-  canvas4: {fileID: 1068172592}
-  canvas5: {fileID: 1980101772}
-  canvas6: {fileID: 372788622}
-  canvas7: {fileID: 427240259}
+  canvasList:
+  - {fileID: 55998368}
+  - {fileID: 544706923}
+  - {fileID: 952061638}
+  - {fileID: 220428819}
+  - {fileID: 500795471}
+  - {fileID: 1068172592}
+  - {fileID: 1980101772}
+  - {fileID: 372788622}
+  - {fileID: 427240259}
   audioSource: {fileID: 1814883342}
   sound1: {fileID: 8300000, guid: 6293f34466aef644b8962d3fe6eb324b, type: 3}
   state: 0
@@ -9449,7 +9452,7 @@ GameObject:
   - component: {fileID: 1980101774}
   - component: {fileID: 1980101773}
   m_Layer: 5
-  m_Name: Canvas5
+  m_Name: Canvas7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
