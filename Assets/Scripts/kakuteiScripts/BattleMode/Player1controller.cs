@@ -67,7 +67,7 @@ public class Player1controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlaying == true)
+        if (isPlaying == true && hp > 0)
         {
 
             Attack();
@@ -179,7 +179,7 @@ public class Player1controller : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Vertical1") && hp != 0 && jumpCount == 0)
+        if (Input.GetButtonDown("Vertical1") && hp > 0 && jumpCount == 0)
         {
             rb.AddForce(transform.up * jumpForce);
             jumpCount++;
