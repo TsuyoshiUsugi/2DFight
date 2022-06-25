@@ -489,11 +489,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clouds:
+  - {fileID: 6010091718374957649, guid: 425e082e73c70744db34bf1bc4b8f63c, type: 3}
   - {fileID: 3840307096440396564, guid: 37495f0f7e82d184e8bc6a06fd252b0e, type: 3}
   - {fileID: 2799220810396084605, guid: 0bf079cf2dd1e7b4fafd78cfc74c1dcd, type: 3}
-  - {fileID: 6010091718374957649, guid: 425e082e73c70744db34bf1bc4b8f63c, type: 3}
   cloudNumber: 0
-  Interval: 5
+  Interval: 6
   time: 0
 --- !u!1001 &124794364
 PrefabInstance:
