@@ -4,6 +4,7 @@
 ジャンルは2Dの対戦型格闘ゲームで7キャラを用意しました。またコントローラーにもフル対応しています。
 入学するまではプログラミング未経験でしたが、多くの時間をかけ授業で習ったことと自分で学んだことを生かしました。
 そのかいもあり、最多得票賞を得ることができました。
+
 ![DSC_0096](https://user-images.githubusercontent.com/104509665/175777015-172f146c-96f3-4db7-ba32-e7b70b937db8.jpg)
 
 
@@ -26,8 +27,15 @@
 
 
 ## 使用した外部サイトの素材
-- 勝利時のSE 
-OtoLogic https://otologic.jp/free/se/game-fighting01.html
+### 勝利時のSE 
+- OtoLogic https://otologic.jp/free/se/game-fighting01.html
 
-- 背景とキャラクター
-http://ansimuz.com/site/
+### 背景とキャラクター
+- http://ansimuz.com/site/
+
+### BGM
+- https://maou.audio/
+
+### 画像
+- http://www.etaro.net/archives/9094
+- http://www.sharots.com/sozai/keyboard.html
