@@ -24,6 +24,7 @@
 ### 演出
 - DOTween (HOTween v2)
 - GothicVania Church Pack
+- Free Pixel Font - Thaleah
 
 
 ## 使用した外部サイトの素材
@@ -39,3 +40,6 @@
 ### 画像
 - http://www.etaro.net/archives/9094
 - http://www.sharots.com/sozai/keyboard.html
+
+### 演出
+- https://github.com/naichilab/Unity-FadeManager/blob/master/README.ja.md
