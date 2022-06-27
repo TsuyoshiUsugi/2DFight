@@ -5,7 +5,7 @@ using UnityEngine;
 public class ArrowGenerator : MonoBehaviour
 {
 
-    public GameObject player1;
+    GameObject player1;
     public Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()

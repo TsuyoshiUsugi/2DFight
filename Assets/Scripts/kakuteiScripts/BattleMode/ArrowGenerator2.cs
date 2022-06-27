@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowGenerator1 : MonoBehaviour
+public class ArrowGenerator2 : MonoBehaviour
 {
 
     public GameObject player2;
