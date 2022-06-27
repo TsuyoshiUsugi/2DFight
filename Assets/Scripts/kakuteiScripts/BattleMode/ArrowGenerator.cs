@@ -5,12 +5,13 @@ using UnityEngine;
 public class ArrowGenerator : MonoBehaviour
 {
 
-    GameObject player1;
-    public Rigidbody2D rb;
+    GameObject _player1;
+    Rigidbody2D _rb;
     // Start is called before the first frame update
     void Start()
     {
         player1 = GameObject.FindGameObjectWithTag("Player1");
+        rb = GetComponent<Rigidbody2D>();
 
         if (player1.transform.localScale.x == 1)
         {
