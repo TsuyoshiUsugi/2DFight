@@ -1057,7 +1057,7 @@ GameObject:
   - component: {fileID: 586843645}
   - component: {fileID: 586843644}
   m_Layer: 0
-  m_Name: aaaaaaa
+  m_Name: BackImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1796,7 +1796,7 @@ GameObject:
   - component: {fileID: 1379170090}
   - component: {fileID: 1379170089}
   m_Layer: 0
-  m_Name: 2
+  m_Name: BackImageSwordRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2532,7 +2532,7 @@ GameObject:
   - component: {fileID: 2128209255}
   - component: {fileID: 2128209254}
   m_Layer: 0
-  m_Name: 4
+  m_Name: BackImageSwordLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

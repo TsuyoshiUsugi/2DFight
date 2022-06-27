@@ -8,15 +8,20 @@ public class ArrowGenerator : MonoBehaviour
     GameObject _player1;
     Rigidbody2D _rb;
 
-    /// <summary>Arrowのダメージ/// </summary>
+    /// <summary>Arrowのダメージ</summary>
     [SerializeField] float damage = 10;
-    /// <summary>Arrowの右方向の速度/// </summary>
+
+    /// <summary>Arrowの右方向の速度</summary>
     [SerializeField] Vector2 rightVelocity = new Vector2(10, 0);
-    /// <summary>Arrowの左方向の速度/// </summary>
+
+    /// <summary>Arrowの左方向の速度</summary>
     [SerializeField] Vector2 leftVelocity = new Vector2(-10, 0);
 
-    /// <summary> 右から当たった時の衝撃/// </summary>
-    [SerializeField] int rightImpactPower = 1000; 
+    /// <summary> 右から当たった時の衝撃</summary>
+    [SerializeField] int rightImpactPower = 1000;
+
+    /// <summary> 右から当たった時の衝撃</summary>
+    [SerializeField] int leftImpactPower = -1000;
     void Start()
     {
         _player1 = GameObject.FindGameObjectWithTag("Player1");
@@ -55,11 +60,11 @@ public class ArrowGenerator : MonoBehaviour
             Destroy(gameObject);
             if (x > 0)
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * 1000);
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * rightImpactPower);
             }
             else if (x < 0)
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * -1000);
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * leftImpactPower);
 
             }
         }
