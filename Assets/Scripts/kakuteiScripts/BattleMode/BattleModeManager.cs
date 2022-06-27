@@ -71,6 +71,11 @@ public class BattleModeManager : MonoBehaviour
         passedTime += Time.deltaTime * 1;
         GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().isPlaying = false;
 
+        IEnumerator P1Win()
+        {
+            yield return new WaitForSeconds(3); 
+        }
+
         if (passedTime > 3)
         {
             if (isPlaying == true)
