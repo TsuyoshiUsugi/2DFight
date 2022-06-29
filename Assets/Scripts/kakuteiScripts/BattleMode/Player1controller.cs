@@ -9,27 +9,26 @@ public class Player1controller : MonoBehaviour
     AudioSource audioSource;
 
     //当たり判定を格納する変数を用意
-    public Transform attackPoint;
-    public float attackRadius;
-    public LayerMask player2Layer;
+    [SerializeField] public Transform _attackPoint;
+    [SerializeField] float _attackRadius;
+    [SerializeField] LayerMask _player2Layer;
 
     [Header("ステータス")]
-    public float moveSpeed = 3;
-    public float hp = 3;
-    public float at = 1;
-    public float mp = 10;
-    public float jumpForce = 250f;
-    public int jumpCount = 0;
-    public float playerNumber = 1;
+    [SerializeField] public float _hp = 3;
+    [SerializeField] public float _mp = 10;
+    [SerializeField] float _moveSpeed = 3;
+    [SerializeField] float _at = 1;
+    [SerializeField] float _jumpForce = 250f;
+    [SerializeField] int _jumpCount = 0;
+    //[SerializeField] float _playerNumber = 1;
 
     [Header("ノックバック")]
-    public float force3 = 0;
+    [SerializeField] float _force3 = 0;
 
     [Header("サウンド")]
-    public AudioClip attack1;
-    public AudioClip jump;
-    public AudioClip Ability1;
-    public AudioClip sound4;
+    [SerializeField] AudioClip _attack1;
+    [SerializeField] AudioClip _jump;
+    [SerializeField] AudioClip _Ability1;
 
     public bool isPlaying = true;
     private Player1UI player1UIscript;
@@ -52,12 +51,9 @@ public class Player1controller : MonoBehaviour
         wallJump = 6,
     }
 
-
-
     // Start is called before the first frame update
     void Start()
     {
-
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player1UIscript = GameObject.Find("Player1UI").GetComponent<Player1UI>();
@@ -67,7 +63,7 @@ public class Player1controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlaying == true && hp > 0)
+        if (isPlaying == true && _hp > 0)
         {
 
             Attack();
@@ -76,8 +72,14 @@ public class Player1controller : MonoBehaviour
 
             Ability();
 
-            Die();
         }
+
+        if (_hp <= 0)
+        {
+            Die();
+
+        }
+
         else if (isPlaying == false)
         {
             animator.SetFloat("Speed", 0);
@@ -94,7 +96,7 @@ public class Player1controller : MonoBehaviour
 
     void Move()
     {
-        if (hp > 0)
+        if (_hp > 0)
         {
             
             float x = Input.GetAxisRaw("Horizontal1");
@@ -108,7 +110,7 @@ public class Player1controller : MonoBehaviour
                 transform.localScale = new Vector3(-1, 1, 1);
             }
             animator.SetFloat("Speed", Mathf.Abs(x));
-            rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
+            rb.velocity = new Vector2(x * _moveSpeed, rb.velocity.y);
         }
 
     }
@@ -127,25 +129,25 @@ public class Player1controller : MonoBehaviour
     //当たり判定をonにする
     void AttackDamage()
     {
-        audioSource.PlayOneShot(attack1);
-        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player2Layer);
+        audioSource.PlayOneShot(_attack1);
+        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRadius, _player2Layer);
 
         foreach (Collider2D hitEnemy in hitEnemys)
         {
             float x = transform.localScale.x;
 
             
-            hitEnemy.GetComponent<Player2controller>().Ondamage(at);
+            hitEnemy.GetComponent<Player2controller>().Ondamage(_at);
 
             if (x > 0)
             {
 
-                hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * -force3);
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * -_force3);
 
             }
             else if (x < 0)
             {
-                hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * force3);
+                hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * _force3);
 
             }
 
@@ -157,15 +159,15 @@ public class Player1controller : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+        Gizmos.DrawWireSphere(_attackPoint.position, _attackRadius);
     }
 
     public void Ondamage(float damage)
     {
-        hp -= damage;
+        _hp -= damage;
         player1UIscript.ReadHp(damage);
 
-        if (hp <= 0)
+        if (_hp <= 0)
         {
             //Die();
         }
@@ -175,15 +177,13 @@ public class Player1controller : MonoBehaviour
         }
     }
 
-    
-
     void Jump()
     {
-        if (Input.GetButtonDown("Vertical1") && hp > 0 && jumpCount == 0)
+        if (Input.GetButtonDown("Vertical1") && _hp > 0 && _jumpCount == 0)
         {
-            rb.AddForce(transform.up * jumpForce);
-            jumpCount++;
-            audioSource.PlayOneShot(jump);
+            rb.AddForce(transform.up * _jumpForce);
+            _jumpCount++;
+            audioSource.PlayOneShot(_jump);
             
             animator.CrossFadeInFixedTime("jump", 0);
         }
@@ -193,8 +193,8 @@ public class Player1controller : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Floor") || gameObject.transform.position.y <= -3)
         {
-            jumpCount = 0;
-            if(hp > 0)
+            _jumpCount = 0;
+            if(_hp > 0)
             animator.CrossFadeInFixedTime("Battle_WomanHeroIdle", 0);
 
         }
@@ -204,9 +204,9 @@ public class Player1controller : MonoBehaviour
 
     void Ability()
     {
-        if (Input.GetButtonDown("Ability1") && mp > 0)
+        if (Input.GetButtonDown("Ability1") && _mp > 0)
         {
-            if (mp > 0)
+            if (_mp > 0)
             {
 
                 animator.SetTrigger("Ability");
@@ -220,7 +220,7 @@ public class Player1controller : MonoBehaviour
     private void Die()
     {
 
-        if (hp <= 0)
+        if (_hp <= 0)
         {
             animator.SetTrigger("Die");
             //audioSource.PlayOneShot(sound4);
@@ -246,11 +246,11 @@ public class Player1controller : MonoBehaviour
     void HeroAbility()
     {
       
-            mp -= 2;
-            player1UIscript.ReadMp(mp);
+            _mp -= 2;
+            player1UIscript.ReadMp(_mp);
             gameObject.layer = 12;
 
-            audioSource.PlayOneShot(Ability1);
+            audioSource.PlayOneShot(_Ability1);
     }
     
     void HeroAbility2()
@@ -263,9 +263,10 @@ public class Player1controller : MonoBehaviour
     {
         GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
 
-        mp -= 2;
-        player1UIscript.ReadMp(mp);
-        audioSource.PlayOneShot(Ability1);
+        _mp -= 2;
+        player1UIscript.ReadMp(_mp);
+        audioSource.PlayOneShot(_Ability1);
+
         if (player2.transform.position.x < -3.5f)
         {
             transform.localScale = new Vector3(-1, 1, 1);
@@ -280,10 +281,10 @@ public class Player1controller : MonoBehaviour
 
     void Monk()
     {
-        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player2Layer);
-        mp -= 1;
-        player1UIscript.ReadMp(mp);
-        audioSource.PlayOneShot(Ability1);
+        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRadius, _player2Layer);
+        _mp -= 1;
+        player1UIscript.ReadMp(_mp);
+        audioSource.PlayOneShot(_Ability1);
 
         foreach (Collider2D hitEnemy in hitEnemys)
         {
@@ -309,21 +310,21 @@ public class Player1controller : MonoBehaviour
 
     void WomanHero()
     {
-        if (mp >= 5)
+        if (_mp >= 5)
         {
             GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
-            mp -= 5;
-            player1UIscript.ReadMp(mp);
+            _mp -= 5;
+            player1UIscript.ReadMp(_mp);
 
             Instantiate(spark, new Vector3(player2.transform.position.x, player2.transform.position.y + 0.1f, 0), player2.transform.rotation);
-            audioSource.PlayOneShot(Ability1);
+            audioSource.PlayOneShot(_Ability1);
         }
     }
 
     void Hunter()
     {
-        Instantiate(arrowPrefab, attackPoint.position, attackPoint.rotation);
-        audioSource.PlayOneShot(attack1);
+        Instantiate(arrowPrefab, _attackPoint.position, _attackPoint.rotation);
+        audioSource.PlayOneShot(_attack1);
     }
 
 }

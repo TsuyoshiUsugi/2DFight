@@ -58,7 +58,7 @@ public class ArrowGenerator2 : MonoBehaviour
 
         if (collision.gameObject.tag == "Player1")
         {
-            collision.gameObject.GetComponent<Player1controller>().Ondamage(10);
+            collision.gameObject.GetComponent<Player1controller>().Ondamage(damage);
             Destroy(gameObject);
             if (x > 0)
             {

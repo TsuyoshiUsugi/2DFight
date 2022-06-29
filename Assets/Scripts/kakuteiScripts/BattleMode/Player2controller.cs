@@ -78,9 +78,15 @@ public class Player2controller : MonoBehaviour
 
             Ability();
 
-            Die();
         }
-        else if (isPlaying == false)
+
+        if (hp <= 0)
+        {
+            Die();
+
+        }
+
+        if (isPlaying == false)
         {
             animator.SetFloat("Speed", 0);
         }

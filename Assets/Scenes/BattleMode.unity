@@ -1733,7 +1733,7 @@ MonoBehaviour:
   prefab4: {fileID: 5984904560451702572, guid: c8e6c2f594ca8a24cba597e13324611b, type: 3}
   prefab5: {fileID: 4758684229833541950, guid: 8c0f2acc1b415e64591b3c99b6db88e7, type: 3}
   prefab6: {fileID: 6485029343332045582, guid: 34c7f943ce53e794d9ccdeb524e6fc99, type: 3}
-  _charaNumber2: 3
+  charaNumber2: 0
 --- !u!4 &923458225
 Transform:
   m_ObjectHideFlags: 0
@@ -4837,9 +4837,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerWinText: {fileID: 1372484567}
-  isPlaying: 0
   audioSource: {fileID: 2061302270}
   sound1: {fileID: 8300000, guid: 33f7f11a28743174ba2c8f59b37903f7, type: 3}
+  _passedTime: 3
+  isPlaying: 0
 --- !u!82 &2061302270
 AudioSource:
   m_ObjectHideFlags: 0
