@@ -9,17 +9,17 @@ public class Player2controller : MonoBehaviour
     AudioSource audioSource;
 
     //当たり判定を格納する変数を用意
-    public Transform attackPoint;
-    public float attackRadius;
-    public LayerMask player1Layer;
+    [SerializeField] public Transform attackPoint;
+    [SerializeField] float _attackRadius;
+    [SerializeField] LayerMask player1Layer;
 
     [Header("ステータス")]
-    public float moveSpeed = 3;
-    public float hp = 3;
-    public float at = 1;
-    public float mp = 10;
-    public float jumpForce = 2500f;
-    private int jumpCount = 0;
+    [SerializeField] float moveSpeed = 3;
+    [SerializeField] public float _hp = 3;
+    [SerializeField] float at = 1;
+    [SerializeField] public float mp = 10;
+    [SerializeField] float jumpForce = 2500f;
+    [SerializeField] int jumpCount = 0;
     public float playerNumber = 2;
 
     [Header("ノックバック")]
@@ -69,7 +69,7 @@ public class Player2controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlaying == true)
+        if (isPlaying == true && _hp > 0)
         {
 
             Attack();
@@ -80,7 +80,7 @@ public class Player2controller : MonoBehaviour
 
         }
 
-        if (hp <= 0)
+        if (_hp <= 0)
         {
             Die();
 
@@ -103,7 +103,7 @@ public class Player2controller : MonoBehaviour
 
     void Move()
     {
-        if (hp > 0)
+        if (_hp > 0)
         {
             float x = Input.GetAxisRaw("Horizontal2");
 
@@ -137,7 +137,7 @@ public class Player2controller : MonoBehaviour
     void AttackDamage()
     {
         audioSource.PlayOneShot(attack1);
-        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player1Layer);
+        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, _attackRadius, player1Layer);
         foreach (Collider2D hitEnemy in hitEnemys)
         {
             float x = transform.localScale.x;
@@ -160,15 +160,15 @@ public class Player2controller : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+        Gizmos.DrawWireSphere(attackPoint.position, _attackRadius);
     }
 
     public void Ondamage(float damage)
     {
-        hp -= damage;
+        _hp -= damage;
         player2UIscript.ReadHp(damage);
 
-        if (hp <= 0)
+        if (_hp <= 0)
         {
             //Die();
         }
@@ -180,7 +180,7 @@ public class Player2controller : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Vertical2") && hp != 0 && jumpCount == 0)
+        if (Input.GetButtonDown("Vertical2") && _hp != 0 && jumpCount == 0)
         {
             rb.AddForce(transform.up * jumpForce);
             jumpCount++;
@@ -218,7 +218,7 @@ public class Player2controller : MonoBehaviour
     {
         
 
-        if (hp <= 0)
+        if (_hp <= 0)
         {
             animator.SetBool("Die", true);
             passedTime += Time.deltaTime;
@@ -286,7 +286,7 @@ public class Player2controller : MonoBehaviour
 
     void Monk()
     {
-        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, player1Layer);
+        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, _attackRadius, player1Layer);
         mp -= 1;
         player2UIscript.ReadMp(1);
         audioSource.PlayOneShot(Ability1);

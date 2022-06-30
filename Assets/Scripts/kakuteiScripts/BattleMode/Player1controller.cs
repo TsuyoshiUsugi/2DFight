@@ -9,7 +9,7 @@ public class Player1controller : MonoBehaviour
     AudioSource audioSource;
 
     //当たり判定を格納する変数を用意
-    [SerializeField] public Transform _attackPoint;
+    [SerializeField] public Transform attackPoint;
     [SerializeField] float _attackRadius;
     [SerializeField] LayerMask _player2Layer;
 
@@ -31,15 +31,18 @@ public class Player1controller : MonoBehaviour
     [SerializeField] AudioClip _Ability1;
 
     public bool isPlaying = true;
-    private Player1UI player1UIscript;
-    float passedTime = 0;
+    Player1UI _player1UIscript;
+    float _passedTime = 0;
 
     [Header("アビリティ")]
-    public GameObject spark;
-    public GameObject arrowPrefab;
+    [SerializeField] GameObject _spark;
+    [SerializeField] GameObject _arrowPrefab;
 
 
     private const string clip_KEY = "Action";
+
+    /*
+    //FSM実装予定
     private enum actionNum
     {
         Battle_WomanHeroIdle = 0,
@@ -50,13 +53,14 @@ public class Player1controller : MonoBehaviour
         wallAttach = 5,
         wallJump = 6,
     }
+    */
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        player1UIscript = GameObject.Find("Player1UI").GetComponent<Player1UI>();
+        _player1UIscript = GameObject.Find("Player1UI").GetComponent<Player1UI>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -65,13 +69,11 @@ public class Player1controller : MonoBehaviour
     {
         if (isPlaying == true && _hp > 0)
         {
-
             Attack();
 
             Jump();
 
             Ability();
-
         }
 
         if (_hp <= 0)
@@ -79,26 +81,27 @@ public class Player1controller : MonoBehaviour
             Die();
 
         }
-
         else if (isPlaying == false)
         {
             animator.SetFloat("Speed", 0);
         }
-
     }
 
     void FixedUpdate()
     {
         if (isPlaying == true)
+        {
             Move();
-
+        }
     }
 
+    /// <summary>
+    /// 移動を行う関数
+    /// </summary>
     void Move()
     {
         if (_hp > 0)
         {
-            
             float x = Input.GetAxisRaw("Horizontal1");
         
             if (x > 0)
@@ -112,60 +115,61 @@ public class Player1controller : MonoBehaviour
             animator.SetFloat("Speed", Mathf.Abs(x));
             rb.velocity = new Vector2(x * _moveSpeed, rb.velocity.y);
         }
-
     }
 
-    //攻撃アニメーションをする
+    /// <summary>
+    /// 攻撃を行う関数
+    /// </summary>
     void Attack()
     {
         if (Input.GetButtonDown("Attack1"))
-            
         {
             animator.SetTrigger("isAttack");
-            //animator.SetBool("isAttack", false);
         }
     }
 
-    //当たり判定をonにする
+    /// <summary>
+    /// 攻撃時当たり判定を行う関数
+    /// </summary>
     void AttackDamage()
     {
         audioSource.PlayOneShot(_attack1);
-        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRadius, _player2Layer);
+        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, _attackRadius, _player2Layer);
 
         foreach (Collider2D hitEnemy in hitEnemys)
         {
             float x = transform.localScale.x;
 
-            
             hitEnemy.GetComponent<Player2controller>().Ondamage(_at);
 
             if (x > 0)
             {
-
                 hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * -_force3);
-
             }
             else if (x < 0)
             {
                 hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * _force3);
-
             }
-
         }
     }
 
-    
-
+    /// <summary>
+    /// 当たり判定の範囲を表示
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_attackPoint.position, _attackRadius);
+        Gizmos.DrawWireSphere(attackPoint.position, _attackRadius);
     }
 
+    /// <summary>
+    /// 被ダメ時の関数
+    /// </summary>
+    /// <param name="damage"></param>
     public void Ondamage(float damage)
     {
         _hp -= damage;
-        player1UIscript.ReadHp(damage);
+        _player1UIscript.ReadHp(damage);
 
         if (_hp <= 0)
         {
@@ -177,6 +181,9 @@ public class Player1controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// ジャンプの関数
+    /// </summary>
     void Jump()
     {
         if (Input.GetButtonDown("Vertical1") && _hp > 0 && _jumpCount == 0)
@@ -189,6 +196,10 @@ public class Player1controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 着地時の関数
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Floor") || gameObject.transform.position.y <= -3)
@@ -198,10 +209,11 @@ public class Player1controller : MonoBehaviour
             animator.CrossFadeInFixedTime("Battle_WomanHeroIdle", 0);
 
         }
-
-
     }
 
+    /// <summary>
+    /// アビリティの関数
+    /// </summary>
     void Ability()
     {
         if (Input.GetButtonDown("Ability1") && _mp > 0)
@@ -217,37 +229,33 @@ public class Player1controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 死亡時の関数
+    /// </summary>
     private void Die()
     {
-
         if (_hp <= 0)
         {
             animator.SetTrigger("Die");
             //audioSource.PlayOneShot(sound4);
-            passedTime += Time.deltaTime;
+            _passedTime += Time.deltaTime;
 
-            if (passedTime > 0.5f)
+            if (_passedTime > 0.5f)
             {
                 Time.timeScale = 1;
             }
             else
             {
-
                 Time.timeScale = 0.1f;
             }
-
-
         }
-
     }
 
     // ここからアビリティ一覧
-
     void HeroAbility()
     {
-      
             _mp -= 2;
-            player1UIscript.ReadMp(_mp);
+            _player1UIscript.ReadMp(_mp);
             gameObject.layer = 12;
 
             audioSource.PlayOneShot(_Ability1);
@@ -256,7 +264,6 @@ public class Player1controller : MonoBehaviour
     void HeroAbility2()
     {
             gameObject.layer = 11;
-            
     }
 
     void SamuraiAbilityMove()
@@ -264,7 +271,7 @@ public class Player1controller : MonoBehaviour
         GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
 
         _mp -= 2;
-        player1UIscript.ReadMp(_mp);
+        _player1UIscript.ReadMp(_mp);
         audioSource.PlayOneShot(_Ability1);
 
         if (player2.transform.position.x < -3.5f)
@@ -281,9 +288,9 @@ public class Player1controller : MonoBehaviour
 
     void Monk()
     {
-        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRadius, _player2Layer);
+        Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, _attackRadius, _player2Layer);
         _mp -= 1;
-        player1UIscript.ReadMp(_mp);
+        _player1UIscript.ReadMp(_mp);
         audioSource.PlayOneShot(_Ability1);
 
         foreach (Collider2D hitEnemy in hitEnemys)
@@ -295,16 +302,12 @@ public class Player1controller : MonoBehaviour
 
             if (x > 0)
             {
-
                 hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * 4000);
-
             }
             else if (x < 0)
             {
                 hitEnemy.GetComponent<Rigidbody2D>().AddForce(transform.right * -4000);
-
             }
-
         }
     }
 
@@ -314,16 +317,16 @@ public class Player1controller : MonoBehaviour
         {
             GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
             _mp -= 5;
-            player1UIscript.ReadMp(_mp);
+            _player1UIscript.ReadMp(_mp);
 
-            Instantiate(spark, new Vector3(player2.transform.position.x, player2.transform.position.y + 0.1f, 0), player2.transform.rotation);
+            Instantiate(_spark, new Vector3(player2.transform.position.x, player2.transform.position.y + 0.1f, 0), player2.transform.rotation);
             audioSource.PlayOneShot(_Ability1);
         }
     }
 
     void Hunter()
     {
-        Instantiate(arrowPrefab, _attackPoint.position, _attackPoint.rotation);
+        Instantiate(_arrowPrefab, attackPoint.position, attackPoint.rotation);
         audioSource.PlayOneShot(_attack1);
     }
 

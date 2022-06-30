@@ -28,7 +28,7 @@ public class Player2UI : MonoBehaviour
         rtHp = transform.GetChild(0).gameObject.GetComponent<RectTransform>();
         rtMp = transform.GetChild(1).gameObject.GetComponent<RectTransform>();
 
-        player2Hp = player2Script.hp;
+        player2Hp = player2Script._hp;
         gageRateHp = rtHp.sizeDelta.x / player2Hp;
 
         player2Mp = player2Script.mp;
