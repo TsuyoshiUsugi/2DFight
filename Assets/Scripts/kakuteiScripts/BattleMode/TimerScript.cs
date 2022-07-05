@@ -8,7 +8,7 @@ public class TimerScript : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
     public float totalTime;
-    public int second;
+    public int second { get; private set; }
 
     public bool isPlaying;
     
