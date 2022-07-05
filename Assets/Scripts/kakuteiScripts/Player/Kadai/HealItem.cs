@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HealItem : Item
 {
-    public override void Items()
+    public override void Get()
     {
+        
         float hp = FindObjectOfType<Player1controller>()._hp;
         hp += 20;
     }
