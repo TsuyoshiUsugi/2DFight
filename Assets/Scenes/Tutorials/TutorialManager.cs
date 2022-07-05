@@ -106,11 +106,9 @@ public class TutorialManager : MonoBehaviour
                 canvasList[7].SetActive(true);
                 break;
             case 8:
-                canvasList[7].SetActive(true);
+                canvasList[8].SetActive(true);
                 break;
-            case 9:
-                canvasList[7].SetActive(true);
-                break;
+            
         }
 
     }

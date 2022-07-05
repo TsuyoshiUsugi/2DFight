@@ -2078,6 +2078,7 @@ GameObject:
   - component: {fileID: 1193883723}
   - component: {fileID: 1193883722}
   - component: {fileID: 1193883721}
+  - component: {fileID: 1193883724}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2149,7 +2150,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u5341\u5B57\u30AD\u30FC\u2190\u3000\u2192\u3067\u30AD\u30E3\u30E9\u5909\u66F4\u3000\u3000\u3000A\u30DC\u30BF\u30F3\u3067\u6C7A\u5B9A/\u30AD\u30E3\u30F3\u30BB\u30EB"
+  m_Text: 
 --- !u!222 &1193883723
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2158,6 +2159,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193883719}
   m_CullTransparentMesh: 1
+--- !u!114 &1193883724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193883719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25a156872ea6d845b974984dc615a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _underText: {fileID: 0}
+  _forPadText: {fileID: 1193883722}
+  pcText: 0
 --- !u!1 &1193903348
 GameObject:
   m_ObjectHideFlags: 0

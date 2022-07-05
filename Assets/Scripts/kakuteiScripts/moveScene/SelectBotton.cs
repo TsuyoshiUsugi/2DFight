@@ -52,14 +52,8 @@ public class SelectBotton : MonoBehaviour
     private void Button()
     {
         float downButton = Input.GetAxis("Menu1");
-        
 
-
-        //Debug.Log(downButtonPC);
-
-
-
-
+        /*
         if (state == 0 && downButton < 0 && buttonTrigger == 0.0f)
         {
             arcadeText.color = new Color(0f, 0f, 0f, 0.46f);
@@ -87,7 +81,7 @@ public class SelectBotton : MonoBehaviour
                 arcadeText.color = new Color(255f, 255f, 255f, 255f);
                 state = 0;
                 audioSource.PlayOneShot(sound1);
-                Debug.Log("okkk");
+                
             }
 
         }
@@ -100,36 +94,62 @@ public class SelectBotton : MonoBehaviour
         }
 
         buttonTrigger = downButton;
+        */
+        if (state == 0 && downButton < 0 && buttonTrigger == 0.0f)
+        {
+            arcadeText.color = new Color(0f, 0f, 0f, 0.46f);
+            battleText.color = new Color(255f, 255f, 255f, 255f);
+            state = 1;
+            audioSource.PlayOneShot(sound1);
+
+
+        }
+        if (state == 1)
+        {
+
+
+            if (downButton > 0 && buttonTrigger == 0.0f)
+            {
+                battleText.color = new Color(0f, 0f, 0f, 0.46f);
+                arcadeText.color = new Color(255f, 255f, 255f, 255f);
+                state = 0;
+                audioSource.PlayOneShot(sound1);
+
+            }
+
+
+
+            buttonTrigger = downButton;
+
+        }
+    }
+        void Decide()
+        {
+            if (state == 0 && Input.GetButtonDown("Attack1"))
+            {
+                audioSource.PlayOneShot(sound2);
+                FadeManager.Instance.LoadScene("Tutorial", 1.0f);
+            }
+            else if (state == 1 && Input.GetButtonDown("Attack1"))
+            {
+                audioSource.PlayOneShot(sound2);
+                FadeManager.Instance.LoadScene("CharacterSelect", 1.0f);
+            }
+            else if (state == 2 && Input.GetButtonDown("Attack1"))
+            {
+                audioSource.PlayOneShot(sound2);
+
+                //UnityEditor.EditorApplication.isPlaying = false;
+
+                Application.Quit();
+            }
+        }
+
+        void ButtonForPC()
+        {
         
-
-    }
-
-    void Decide()
-    {
-        if (state == 0 && Input.GetButtonDown("Attack1"))
-        {
-            audioSource.PlayOneShot(sound2);
-            FadeManager.Instance.LoadScene("Tutorial", 1.0f);
-        }
-        else if (state == 1 && Input.GetButtonDown("Attack1"))
-        {
-            audioSource.PlayOneShot(sound2);
-            FadeManager.Instance.LoadScene("CharacterSelect", 1.0f);
-        }
-        else if (state == 2 && Input.GetButtonDown("Attack1"))
-        {
-            audioSource.PlayOneShot(sound2);
-
-            //UnityEditor.EditorApplication.isPlaying = false;
-
-            Application.Quit();
-        }
-    }
-
-    void ButtonForPC()
-    {
         float downButtonPC = Input.GetAxisRaw("PCMenu1");
-
+        /*
         if (state == 0 && Input.GetAxisRaw("PCMenu1") == -1 && buttonTriggerPC == 0)
         {
             arcadeText.DOColor(new Color(0f, 0f, 0f, 0.46f), 0f);
@@ -156,7 +176,7 @@ public class SelectBotton : MonoBehaviour
                 arcadeText.DOColor(Color.white, 0f);
                 state = 0;
                 audioSource.PlayOneShot(sound1);
-                
+
             }
 
         }
@@ -169,9 +189,34 @@ public class SelectBotton : MonoBehaviour
         }
 
         buttonTriggerPC = downButtonPC;
+        */
 
+        if (state == 0 && Input.GetAxisRaw("PCMenu1") == -1 && buttonTriggerPC == 0)
+        {
+            arcadeText.DOColor(new Color(0f, 0f, 0f, 0.46f), 0f);
+            battleText.DOColor(Color.white, 0f);
+            state = 1;
+            audioSource.PlayOneShot(sound1);
+        }
+        else if (state == 1)
+        {
+
+
+            if (Input.GetAxisRaw("PCMenu1") == 1 && buttonTriggerPC == 0)
+            {
+
+                battleText.DOColor(new Color(0f, 0f, 0f, 0.46f), 0f);
+                arcadeText.DOColor(Color.white, 0f);
+                state = 0;
+                audioSource.PlayOneShot(sound1);
+
+            }
+
+        }
+       
+        buttonTriggerPC = downButtonPC;
     }
 
-
+    
 
 }
