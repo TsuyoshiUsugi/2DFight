@@ -24,12 +24,14 @@ public abstract class Item : MonoBehaviour
     //プレイヤーが当たったら効果を発動し、消す
     private void OnTriggerEnter(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("")
+        if (collision.gameObject.tag.Equals(""))
         {
             if (_sound)
             {
+                Get();
                 AudioSource.PlayClipAtPoint(_sound, Camera.main.transform.position);
             }
+            Destroy(this.gameObject);
         }
         
     }
