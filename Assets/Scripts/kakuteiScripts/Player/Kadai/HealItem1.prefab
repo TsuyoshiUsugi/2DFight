@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4492920759680145080}
   - component: {fileID: 4492920759680145087}
   - component: {fileID: 4492920759680145086}
-  - component: {fileID: 4492920759680145085}
+  - component: {fileID: 2498158721954076777}
   m_Layer: 0
-  m_Name: DamageItem
+  m_Name: HealItem1
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6a721b3c6af40c64faa5eccc99b7b4ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a3fcfcec5c3f2240b6a6d90821753d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,7 @@ CircleCollider2D:
   m_Offset: {x: -0.06833291, y: 0.04823494}
   serializedVersion: 2
   m_Radius: 0.23970628
---- !u!114 &4492920759680145085
+--- !u!114 &2498158721954076777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4492920759680145084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21c19dad4ac421c4a84e11b67ac7e8bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 49a5611e89589f340af4d568378afb42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _sound: {fileID: 8300000, guid: 03ae680d1d005604aa362eb1467a23a3, type: 3}
@@ -117,4 +117,5 @@ MonoBehaviour:
   - {x: -3.3, y: -1.2, z: 0}
   - {x: -0.6, y: -1.2, z: 0}
   - {x: -6, y: -1.2, z: 0}
-  damagePoint: 20
+  - {x: -3.3, y: -1.2, z: 0}
+  HealPoint: 20

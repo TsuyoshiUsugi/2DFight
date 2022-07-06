@@ -15,7 +15,21 @@ public class Player2controller : MonoBehaviour
 
     [Header("ステータス")]
     [SerializeField] float moveSpeed = 3;
-    [SerializeField] public float _hp = 3;
+    [SerializeField] float _hp;
+    [SerializeField] float _mp;
+
+    public float Hp
+    {
+        get { return _hp; }
+        set { _hp = value; }
+    }
+
+    public float Mp
+    {
+        get { return _mp; }
+        set { _mp = value; }
+    }
+
     [SerializeField] float at = 1;
     [SerializeField] public float mp = 10;
     [SerializeField] float jumpForce = 2500f;

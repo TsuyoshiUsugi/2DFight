@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 当たったらHPが減るアイテム
+/// 当たったらHPが回復するアイテム
 /// </summary>
-public class HellItem : ItemBase
+public class HealItem : ItemBase
 {
-    /// <summary>ダメージの値</summary>
-    [SerializeField] float damagePoint = 20;
+    /// <summary>回復の値</summary>
+    [SerializeField] float HealPoint = 20;
 
     public override void Get()
     {
         if (Player.CompareTag("Player1"))
         {
-            Player.GetComponent<Player1controller>().Hp -= damagePoint;
+            Player.GetComponent<Player1controller>().Hp += HealPoint;
         }
-        else 
+        else
         {
-            Player.GetComponent<Player2controller>().Hp -= damagePoint;
+            Player.GetComponent<Player2controller>().Hp += HealPoint;
         }
     }
 

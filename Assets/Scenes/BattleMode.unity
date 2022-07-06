@@ -1458,7 +1458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff51b669628f4449816398178a9dd6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: {fileID: 879401579}
   ItemList:
   - {fileID: 4492920759680145084, guid: db09de29a0f1f7b4c98808aff4dab44d, type: 3}
 --- !u!1 &782420384
@@ -1740,7 +1739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 879401577}
-  totalTime: 60
+  totalTime: 31
   isPlaying: 0
 --- !u!1 &923458223
 GameObject:

@@ -3,49 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// ステージに出現するアイテムの共通クラス
+/// </summary>
 [RequireComponent(typeof(Collider2D))]
 public abstract class ItemBase : MonoBehaviour
 {
+    /// <summary>取得時の効果音</summary>
     [Tooltip("取得時の効果音")]
     [SerializeField] AudioClip _sound = default;
-    GameObject _item;
-    // Start is called before the first frame update
-    void Start()
-    {
-        _item = this.gameObject;
-        _item.transform.DOMove(new Vector3(-3.5f, -1f, 0) ,1);
-        Debug.Log("aaa");
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>出現したアイテムの移動地点</summary>
+    [Header("移動地点")]
+    [SerializeField] Vector3[] route = { };
 
+    public GameObject Player { get; set; }
+
+    /// <summary>
+    /// アイテムの発動効果を実装
+    /// </summary>
     public abstract void Get();
 
-    //プレイヤーが当たったら効果を発動し消す
-    private void OnTriggerEnter2D(Collider2D collision)
+    /// <summary>
+    /// あたったプレイヤーに効果を発動する
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D _player)
     {
-        if (collision.gameObject.tag.Equals("Player1"))
-        {
-          
-            Get();
-            AudioSource.PlayClipAtPoint(_sound, Camera.main.transform.position);
-            Destroy(this.gameObject);
-        }
-        
+        Player = _player.gameObject;
+        Get();
+        AudioSource.PlayClipAtPoint(_sound, Camera.main.transform.position);
+        Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// フィールドの指定の位置を行き来する
+    /// </summary>
     public void objMove()
     {
-        
-        //transform.DOMove(new Vector3(-3.5f, -1f, 0), 1);
-        transform.DOPath(
-            new Vector3[] { new Vector3(-3.5f, -1f, 0), new Vector3(-0.5f, -1f, 0), new Vector3(-6.18f, -1f, 0) },10f
-            ).SetLoops(-1, LoopType.Yoyo);
-
+        transform.DOPath(route,10f).SetLoops(-1, LoopType.Yoyo); ;
     }
+    
 }

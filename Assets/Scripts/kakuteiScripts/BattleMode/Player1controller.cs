@@ -14,13 +14,13 @@ public class Player1controller : MonoBehaviour
     [SerializeField] LayerMask _player2Layer;
 
     [Header("ステータス")]
-    [SerializeField] public float _hp = 3;
-    [SerializeField] public float _mp = 10;
+    [SerializeField] float _hp;
+    [SerializeField] float _mp;
     [SerializeField] float _moveSpeed = 3;
     [SerializeField] float _at = 1;
     [SerializeField] float _jumpForce = 250f;
     [SerializeField] int _jumpCount = 0;
-    //[SerializeField] float _playerNumber = 1;
+
 
     [Header("ノックバック")]
     [SerializeField] float _force3 = 0;
@@ -41,8 +41,20 @@ public class Player1controller : MonoBehaviour
 
     private const string clip_KEY = "Action";
 
+    public float Mp
+    {
+        get { return _mp; }
+        set { _mp = value; }
+    }
+
+    public float Hp
+    {
+        get { return _hp; }
+        set { _hp = value; }
+    }
+
     /*
-    //FSM実装予定
+    //FSMつかう予定
     private enum actionNum
     {
         Battle_WomanHeroIdle = 0,
@@ -67,7 +79,7 @@ public class Player1controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlaying == true && _hp > 0)
+        if (isPlaying == true && Hp > 0)
         {
             Attack();
 
@@ -76,7 +88,7 @@ public class Player1controller : MonoBehaviour
             Ability();
         }
 
-        if (_hp <= 0)
+        if (Hp <= 0)
         {
             Die();
 
@@ -100,7 +112,7 @@ public class Player1controller : MonoBehaviour
     /// </summary>
     void Move()
     {
-        if (_hp > 0)
+        if (Hp > 0)
         {
             float x = Input.GetAxisRaw("Horizontal1");
         
@@ -168,10 +180,10 @@ public class Player1controller : MonoBehaviour
     /// <param name="damage"></param>
     public void Ondamage(float damage)
     {
-        _hp -= damage;
+        Hp -= damage;
         _player1UIscript.ReadHp(damage);
 
-        if (_hp <= 0)
+        if (Hp <= 0)
         {
             //Die();
         }
@@ -186,7 +198,7 @@ public class Player1controller : MonoBehaviour
     /// </summary>
     void Jump()
     {
-        if (Input.GetButtonDown("Vertical1") && _hp > 0 && _jumpCount == 0)
+        if (Input.GetButtonDown("Vertical1") && Hp > 0 && _jumpCount == 0)
         {
             rb.AddForce(transform.up * _jumpForce);
             _jumpCount++;
@@ -205,7 +217,7 @@ public class Player1controller : MonoBehaviour
         if (other.gameObject.CompareTag("Floor") || gameObject.transform.position.y <= -3)
         {
             _jumpCount = 0;
-            if(_hp > 0)
+            if(Hp > 0)
             animator.CrossFadeInFixedTime("Battle_WomanHeroIdle", 0);
 
         }
@@ -216,9 +228,9 @@ public class Player1controller : MonoBehaviour
     /// </summary>
     void Ability()
     {
-        if (Input.GetButtonDown("Ability1") && _mp > 0)
+        if (Input.GetButtonDown("Ability1") && Mp > 0)
         {
-            if (_mp > 0)
+            if (Mp > 0)
             {
 
                 animator.SetTrigger("Ability");
@@ -234,7 +246,7 @@ public class Player1controller : MonoBehaviour
     /// </summary>
     private void Die()
     {
-        if (_hp <= 0)
+        if (Hp <= 0)
         {
             animator.SetTrigger("Die");
             //audioSource.PlayOneShot(sound4);
@@ -254,8 +266,8 @@ public class Player1controller : MonoBehaviour
     // ここからアビリティ一覧
     void HeroAbility()
     {
-            _mp -= 2;
-            _player1UIscript.ReadMp(_mp);
+            Mp -= 2;
+            _player1UIscript.ReadMp(Mp);
             gameObject.layer = 12;
 
             audioSource.PlayOneShot(_Ability1);
@@ -270,8 +282,8 @@ public class Player1controller : MonoBehaviour
     {
         GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
 
-        _mp -= 2;
-        _player1UIscript.ReadMp(_mp);
+        Mp -= 2;
+        _player1UIscript.ReadMp(Mp);
         audioSource.PlayOneShot(_Ability1);
 
         if (player2.transform.position.x < -3.5f)
@@ -289,8 +301,8 @@ public class Player1controller : MonoBehaviour
     void Monk()
     {
         Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, _attackRadius, _player2Layer);
-        _mp -= 1;
-        _player1UIscript.ReadMp(_mp);
+        Mp -= 1;
+        _player1UIscript.ReadMp(Mp);
         audioSource.PlayOneShot(_Ability1);
 
         foreach (Collider2D hitEnemy in hitEnemys)
@@ -313,11 +325,11 @@ public class Player1controller : MonoBehaviour
 
     void WomanHero()
     {
-        if (_mp >= 5)
+        if (Mp >= 5)
         {
             GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
-            _mp -= 5;
-            _player1UIscript.ReadMp(_mp);
+            Mp -= 5;
+            _player1UIscript.ReadMp(Mp);
 
             Instantiate(_spark, new Vector3(player2.transform.position.x, player2.transform.position.y + 0.1f, 0), player2.transform.rotation);
             audioSource.PlayOneShot(_Ability1);

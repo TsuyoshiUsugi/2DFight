@@ -72,8 +72,8 @@ public class BattleModeManager : MonoBehaviour
     {
         if (isPlaying == true)
         {
-            _player1Hp = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>()._hp;
-            _player2Hp = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2controller>()._hp;
+            _player1Hp = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().Hp;
+            _player2Hp = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2controller>().Hp;
             GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().isPlaying = false;
             GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2controller>().isPlaying = false;
         }

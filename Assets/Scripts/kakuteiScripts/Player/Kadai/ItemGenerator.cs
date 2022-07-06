@@ -2,24 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 30秒経過時にステージにアイテムを一つランダムで出現させるコンポーネント
+/// </summary>
 public class ItemGenerator : MonoBehaviour
 {
-    [SerializeField] TimerScript time;
+    /// <summary>出現させるアイテムのリスト</summary>
     [SerializeField] List<GameObject> ItemList = new List<GameObject>();
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (time.second < 30)
-        {
-            Instantiate(ItemList[Random.Range(0, ItemList.Count)]);         
-        }
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        
-    }
-
-
+        if (TimerScript.second == 30 && FindObjectOfType<ItemBase>() == null)
+        {
+            Instantiate(ItemList[Random.Range(0, ItemList.Count)]);
+        }
+    }      
 }

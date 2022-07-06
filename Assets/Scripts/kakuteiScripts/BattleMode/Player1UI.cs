@@ -28,10 +28,10 @@ public class Player1UI : MonoBehaviour
         rtHp = transform.GetChild(0).gameObject.GetComponent<RectTransform>();
         rtMp = transform.GetChild(1).gameObject.GetComponent<RectTransform>();
 
-        player1Hp = player1Script._hp;
+        player1Hp = player1Script.Hp;
         gageRateHp = rtHp.sizeDelta.x / player1Hp;
 
-        player1Mp = player1Script._mp;
+        player1Mp = player1Script.Mp;
         gageRateMp = rtMp.sizeDelta.x / player1Mp;
     }
 
