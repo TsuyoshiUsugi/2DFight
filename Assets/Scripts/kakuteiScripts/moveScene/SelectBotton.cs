@@ -53,48 +53,6 @@ public class SelectBotton : MonoBehaviour
     {
         float downButton = Input.GetAxis("Menu1");
 
-        /*
-        if (state == 0 && downButton < 0 && buttonTrigger == 0.0f)
-        {
-            arcadeText.color = new Color(0f, 0f, 0f, 0.46f);
-            battleText.color = new Color(255f, 255f, 255f, 255f);
-            state = 1;
-            audioSource.PlayOneShot(sound1);
-
-
-        }
-        else if (state == 1)
-        {
-
-
-            if (downButton < 0 && buttonTrigger == 0.0f)
-            {
-                battleText.color = new Color(0f, 0f, 0f, 0.46f);
-                quitText.color = new Color(255f, 255f, 255f, 255f);
-                state = 2;
-                audioSource.PlayOneShot(sound1);
-
-            }
-            else if (downButton > 0 && buttonTrigger == 0.0f)
-            {
-                battleText.color = new Color(0f, 0f, 0f, 0.46f);
-                arcadeText.color = new Color(255f, 255f, 255f, 255f);
-                state = 0;
-                audioSource.PlayOneShot(sound1);
-                
-            }
-
-        }
-        else if (state == 2 && downButton > 0 && buttonTrigger == 0.0f)
-        {
-            quitText.color = new Color(0f, 0f, 0f, 0.46f);
-            battleText.color = new Color(255f, 255f, 255f, 255f);
-            state = 1;
-            audioSource.PlayOneShot(sound1);
-        }
-
-        buttonTrigger = downButton;
-        */
         if (state == 0 && downButton < 0 && buttonTrigger == 0.0f)
         {
             arcadeText.color = new Color(0f, 0f, 0f, 0.46f);
@@ -149,47 +107,6 @@ public class SelectBotton : MonoBehaviour
         {
         
         float downButtonPC = Input.GetAxisRaw("PCMenu1");
-        /*
-        if (state == 0 && Input.GetAxisRaw("PCMenu1") == -1 && buttonTriggerPC == 0)
-        {
-            arcadeText.DOColor(new Color(0f, 0f, 0f, 0.46f), 0f);
-            battleText.DOColor(Color.white, 0f);
-            state = 1;
-            audioSource.PlayOneShot(sound1);
-        }
-        else if (state == 1)
-        {
-
-
-            if (Input.GetAxisRaw("PCMenu1") == -1 && buttonTriggerPC == 0)
-            {
-                battleText.DOColor(new Color(0f, 0f, 0f, 0.46f), 0f);
-                quitText.DOColor(Color.white, 0f);
-                state = 2;
-                audioSource.PlayOneShot(sound1);
-
-            }
-            else if (Input.GetAxisRaw("PCMenu1") == 1 && buttonTriggerPC == 0)
-            {
-
-                battleText.DOColor(new Color(0f, 0f, 0f, 0.46f), 0f);
-                arcadeText.DOColor(Color.white, 0f);
-                state = 0;
-                audioSource.PlayOneShot(sound1);
-
-            }
-
-        }
-        else if (state == 2 && Input.GetAxisRaw("PCMenu1") == 1 && buttonTriggerPC == 0)
-        {
-            quitText.DOColor(new Color(0f, 0f, 0f, 0.46f), 0f);
-            battleText.DOColor(Color.white, 0f);
-            state = 1;
-            audioSource.PlayOneShot(sound1);
-        }
-
-        buttonTriggerPC = downButtonPC;
-        */
 
         if (state == 0 && Input.GetAxisRaw("PCMenu1") == -1 && buttonTriggerPC == 0)
         {
