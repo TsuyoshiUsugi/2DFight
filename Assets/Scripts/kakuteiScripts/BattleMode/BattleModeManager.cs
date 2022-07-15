@@ -10,8 +10,16 @@ using TMPro;
 /// 時間管理（対応中）
 /// 勝利判定と演出
 /// </summary>
+
 public class BattleModeManager : MonoBehaviour
 {
+    [Header("アイテム出現用")]
+    /// <summary>アイテム生成するオブジェクト</summary>
+    [SerializeField] GameObject _itemGenerator;
+
+    /// <summary>いつアイテム生成オブジェクトを起動するか</summary>
+    [SerializeField] int _setActiveItemGenerator;
+
     [Header("時間管理用")]
     /// <summary>経過時間を表示するテキスト</summary>
     [SerializeField] TextMeshProUGUI _timerText;
@@ -40,7 +48,6 @@ public class BattleModeManager : MonoBehaviour
     /// <summary>戦闘が続いているかを判定する</summary>
     public bool isPlaying = false;
 
-
     private void Awake()
     {
         isPlaying = true;
@@ -49,6 +56,8 @@ public class BattleModeManager : MonoBehaviour
     private void Update()
     {
         TimerCount();
+
+        SetActiveItemGenerator();
     }
     /// <summary>
     /// プレイヤー１が死んだらプレイヤー２を動けなくさせて勝利演出を行う
@@ -149,6 +158,17 @@ public class BattleModeManager : MonoBehaviour
             {
                 Judge();
             }
+        }
+    }
+
+    /// <summary>
+    /// アイテム生成オブジェクトを起動するメソッド
+    /// </summary>
+    void SetActiveItemGenerator()
+    {
+        if (_nowSecond == _setActiveItemGenerator)
+        {
+            _itemGenerator.SetActive(true);
         }
     }
 }

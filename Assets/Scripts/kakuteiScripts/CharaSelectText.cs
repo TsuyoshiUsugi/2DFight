@@ -22,7 +22,7 @@ public class CharaSelectText : MonoBehaviour
         {
             pcText = true;
         }
-       // else if (Input.)
+      　 // else if (Input.)
         //_forPadText.text = "A Dか←　→でキャラ変更　　　SPACEボタンかバックスラッシュで決定/キャンセル";
     }
 
