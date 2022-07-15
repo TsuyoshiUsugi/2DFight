@@ -181,16 +181,7 @@ public class Player1controller : MonoBehaviour
     public void Ondamage(float damage)
     {
         Hp -= damage;
-        _player1UIscript.ReadHp(damage);
-
-        if (Hp <= 0)
-        {
-            //Die();
-        }
-        else
-        {
-            animator.SetTrigger("isHurt");
-        }
+        animator.SetTrigger("isHurt");
     }
 
     /// <summary>
@@ -203,7 +194,6 @@ public class Player1controller : MonoBehaviour
             rb.AddForce(transform.up * _jumpForce);
             _jumpCount++;
             audioSource.PlayOneShot(_jump);
-            
             animator.CrossFadeInFixedTime("jump", 0);
         }
     }
@@ -219,7 +209,6 @@ public class Player1controller : MonoBehaviour
             _jumpCount = 0;
             if(Hp > 0)
             animator.CrossFadeInFixedTime("Battle_WomanHeroIdle", 0);
-
         }
     }
 
@@ -232,10 +221,7 @@ public class Player1controller : MonoBehaviour
         {
             if (Mp > 0)
             {
-
                 animator.SetTrigger("Ability");
-                
-                //audioSource.PlayOneShot(Ability1);
             }
            
         }
@@ -264,6 +250,12 @@ public class Player1controller : MonoBehaviour
     }
 
     // ここからアビリティ一覧
+    // スキルは全てアニメーションイベントから呼ぶ
+
+    /// <summary>
+    /// Heroのアビリティ
+    /// Layerを変えて当たり判定を一時的になくす
+    /// </summary>
     void HeroAbility()
     {
             Mp -= 2;
@@ -273,11 +265,20 @@ public class Player1controller : MonoBehaviour
             audioSource.PlayOneShot(_Ability1);
     }
     
+    /// <summary>
+    /// Heroのアビリティ２レイヤを元に戻す
+    /// </summary>
     void HeroAbility2()
     {
             gameObject.layer = 11;
     }
 
+    /// <summary>
+    /// 侍のアビリティ
+    /// 相手の近くに瞬間移動
+    /// 相手が右側にいる時は相手の左側にワープ
+    /// 相手が左側にいる時は相手の右側にワープ
+    /// </summary>
     void SamuraiAbilityMove()
     {
         GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
@@ -298,6 +299,10 @@ public class Player1controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Monkのアビリティ
+    /// 大ダメージを与え、相手を吹っ飛ばす
+    /// </summary>
     void Monk()
     {
         Collider2D[] hitEnemys = Physics2D.OverlapCircleAll(attackPoint.position, _attackRadius, _player2Layer);
@@ -323,6 +328,10 @@ public class Player1controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 女戦士のアビリティ
+    /// 相手の位置に雷を落とす
+    /// </summary>
     void WomanHero()
     {
         if (Mp >= 5)
@@ -336,6 +345,10 @@ public class Player1controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    ///矢を発射する
+    ///通常攻撃のアニメーションに追加する
+    /// </summary>
     void Hunter()
     {
         Instantiate(_arrowPrefab, attackPoint.position, attackPoint.rotation);

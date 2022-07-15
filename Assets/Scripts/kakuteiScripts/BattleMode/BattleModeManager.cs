@@ -3,10 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
+/// <summary>
+/// バトルシーンを管理するコンポーネント
+/// HP管理（対応中）
+/// 時間管理（対応中）
+/// 勝利判定と演出
+/// </summary>
 public class BattleModeManager : MonoBehaviour
 {
+    [Header("時間管理用")]
+    /// <summary>経過時間を表示するテキスト</summary>
+    [SerializeField] TextMeshProUGUI _timerText;
+
+    /// <summary>試合の最大時間</summary>
+    [SerializeField] float _totalTime;
+
+    /// <summary>現在の時間</summary>
+    [SerializeField] int _nowSecond;
+
+    /// <summary> _nowSecondのプロパティ</summary>
+    public int Second { get => _nowSecond; set => _nowSecond = value; }
+
+    [Header("体力管理用")]
     float _player1Hp;
-    float _player2Hp;      
+    float _player2Hp;
+
+    [Header("演出用")]
     [SerializeField] TextMeshProUGUI playerWinText;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip sound1;
@@ -23,19 +46,25 @@ public class BattleModeManager : MonoBehaviour
         isPlaying = true;
     }
 
+    private void Update()
+    {
+        TimerCount();
+    }
+    /// <summary>
+    /// プレイヤー１が死んだらプレイヤー２を動けなくさせて勝利演出を行う
+    /// </summary>
     public void Player1Die()
     {
-        
         GameObject.FindGameObjectWithTag("Player2").GetComponent<Player2controller>().isPlaying = false;
-
         StartCoroutine(P2Win());
     }
 
+    /// <summary>
+    /// プレイヤー２が死んだらプレイヤー１を動けなくさせて勝利演出を行う
+    /// </summary>
     public void Player2Die()
     {
-        
         GameObject.FindGameObjectWithTag("Player1").GetComponent<Player1controller>().isPlaying = false;
-
         StartCoroutine(P1Win());
     }
 
@@ -97,6 +126,28 @@ public class BattleModeManager : MonoBehaviour
                 playerWinText.text = "DRAW GAME";
                 isPlaying = false;
                 GameObject.Find("Buttons").GetComponent<SelectButton2>().isPlaying = false;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 時間を管理するコンポーネント
+    /// </summary>
+    void TimerCount()
+    {
+        //プレイ中なら
+        if (isPlaying == true)
+        {
+            _totalTime -= Time.deltaTime;
+            _nowSecond = (int)_totalTime;
+            if (_nowSecond >= 0)
+            {
+                _timerText.text = _nowSecond.ToString();
+            }
+            //時間切れになったら判定用のメソッドを呼び出す
+            else
+            {
+                Judge();
             }
         }
     }

@@ -4,19 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// 現在の時間を表示するコンポーネント
+/// </summary>
 public class TimerScript : MonoBehaviour
 {
+    [Header("参照一覧")]
     public TextMeshProUGUI timerText;
     public float totalTime;
     public static int second { get; private set; }
 
     public bool isPlaying;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        isPlaying = GameObject.Find("BattleModeManager").GetComponent<BattleModeManager>().isPlaying;
-    }
 
     // Update is called once per frame
     void Update()

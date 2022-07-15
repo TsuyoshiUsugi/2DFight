@@ -42,12 +42,13 @@ public class Player1UI : MonoBehaviour
         {
             GameObject.Find("BattleModeManager").GetComponent<BattleModeManager>().Player1Die();
         }
+        ReadHp();
     }
 
-    public void ReadHp(float damage)
+    void ReadHp()
     {
-        
-         rtHp.sizeDelta = new Vector2(rtHp.sizeDelta.x - (damage * gageRateHp), rtHp.sizeDelta.y);
+         player1Hp = player1Object.GetComponent<Player1controller>().Hp;
+         rtHp.sizeDelta = new Vector2(player1Hp * gageRateHp, rtHp.sizeDelta.y);
     }
 
     public void ReadMp(float mp)
