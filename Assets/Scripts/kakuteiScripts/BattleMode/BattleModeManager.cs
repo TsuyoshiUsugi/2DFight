@@ -10,9 +10,12 @@ using TMPro;
 /// 時間管理（対応中）
 /// 勝利判定と演出
 /// </summary>
-
 public class BattleModeManager : MonoBehaviour
 {
+    private static BattleModeManager instance = new BattleModeManager();
+
+    public static BattleModeManager BMInstance { get => instance; }
+
     [Header("アイテム出現用")]
     /// <summary>アイテム生成するオブジェクト</summary>
     [SerializeField] GameObject _itemGenerator;

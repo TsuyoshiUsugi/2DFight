@@ -22,6 +22,7 @@ public class ArrowGenerator : MonoBehaviour
 
     void Start()
     {
+
         _player1 = GameObject.FindGameObjectWithTag("Player1");
         _rb = GetComponent<Rigidbody2D>();
 
