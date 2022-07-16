@@ -22,17 +22,18 @@ public class ArrowGenerator : MonoBehaviour
 
     void Start()
     {
-
+        //自分を発射したプレイヤーのオブジェクトを取得
         _player1 = GameObject.FindGameObjectWithTag("Player1");
         _rb = GetComponent<Rigidbody2D>();
 
+        //右向き
         if (_player1.transform.localScale.x == 1)
         {
             _rb.velocity = _Velocity;
         }
+        //左向きの時向きを変える
         else if(_player1.transform.localScale.x == -1)
         {
-            //左向きの時向きを変える
             transform.localScale = new Vector3(-1, 1, 1);
             _rb.velocity = -_Velocity;
         }
