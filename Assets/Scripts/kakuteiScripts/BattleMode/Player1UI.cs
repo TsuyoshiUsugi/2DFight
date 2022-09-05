@@ -1,44 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player1UI : MonoBehaviour
 {
-    private GameObject player1Object;    //Player1オブジェクト
-    private Player1controller player1Script;    //Player1スクリプト
+    private GameObject _player1Object;    //Player1オブジェクト
+    private Player1controller _player1Script;    //Player1スクリプト
 
     //Player1のHP情報
     
-    private float player1Hp;    //Player1の体力
-    private float gageRateHp;    //体力とゲージのサイズの比
-    public RectTransform rtHp;
+    private float _player1Hp;    //Player1の体力
+    private float _gageRateHp;    //体力とゲージのサイズの比
+    public RectTransform _rtHp;
 
     //Player1のMP情報
 
-    private float player1Mp;
-    private float gageRateMp;
-    private RectTransform rtMp;
+    private float _player1Mp;
+    private float _gageRateMp;
+    private RectTransform _rtMp;
+
+    /// <summary>barが変化するのにかかる時間</summary>
+    [SerializeField] float _changeBarInterval = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
         //Player1の情報を読み取る
-        player1Object = GameObject.FindGameObjectWithTag("Player1");
-        player1Script = player1Object.GetComponent<Player1controller>();
-        rtHp = transform.GetChild(0).gameObject.GetComponent<RectTransform>();
-        rtMp = transform.GetChild(1).gameObject.GetComponent<RectTransform>();
+        _player1Object = GameObject.FindGameObjectWithTag("Player1");
+        _player1Script = _player1Object.GetComponent<Player1controller>();
+        _rtHp = transform.GetChild(0).gameObject.GetComponent<RectTransform>();
+        _rtMp = transform.GetChild(1).gameObject.GetComponent<RectTransform>();
 
-        player1Hp = player1Script.Hp;
-        gageRateHp = rtHp.sizeDelta.x / player1Hp;
+        _player1Hp = _player1Script.Hp;
+        _gageRateHp = _rtHp.sizeDelta.x / _player1Hp;
 
-        player1Mp = player1Script.Mp;
-        gageRateMp = rtMp.sizeDelta.x / player1Mp;
+        _player1Mp = _player1Script.Mp;
+        _gageRateMp = _rtMp.sizeDelta.x / _player1Mp;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (rtHp.sizeDelta.x <= 0)
+        if (_rtHp.sizeDelta.x <= 0)
         {
             GameObject.Find("BattleModeManager").GetComponent<BattleModeManager>().Player1Die();
         }
@@ -47,14 +51,22 @@ public class Player1UI : MonoBehaviour
 
     void ReadHp()
     {
-         player1Hp = player1Object.GetComponent<Player1controller>().Hp;
-         rtHp.sizeDelta = new Vector2(player1Hp * gageRateHp, rtHp.sizeDelta.y);
+
+        _player1Hp = _player1Object.GetComponent<Player1controller>().Hp;
+        _rtHp.sizeDelta = new Vector2(_player1Hp * _gageRateHp, _rtHp.sizeDelta.y);
     }
 
+    /// <summary>
+    /// DoTweenを使ったMPゲージを変化させる関数
+    /// </summary>
+    /// <param name="mp"></param>
     public void ReadMp(float mp)
     {
-        
-         rtMp.sizeDelta = new Vector2((mp * gageRateMp), rtMp.sizeDelta.y);
-        
+        //rtMp.sizeDelta = new Vector2((mp * gageRateMp), rtMp.sizeDelta.y);
+        DOTween.To(() => _player1Mp,
+            x => _player1Mp = x,
+            mp,
+            1f)
+            .OnUpdate(() => _rtMp.sizeDelta = new Vector2((_player1Mp * _gageRateMp), _rtMp.sizeDelta.y));
     }
 }
